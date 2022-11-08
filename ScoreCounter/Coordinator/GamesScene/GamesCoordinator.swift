@@ -27,7 +27,7 @@ class GamesCoordinator: Coordinator {
 }
 extension GamesCoordinator: GamesViewControllerDelegate {
     func showScoreViewController(with game: NewGame) {
-        let scoreCoordinator = ScoreCoodinator(navigationController: navigationController)
+        let scoreCoordinator = ScoreCoodinator(navigationController: navigationController, game: game)
         scoreCoordinator.start()
         childCoordinator = scoreCoordinator
     }

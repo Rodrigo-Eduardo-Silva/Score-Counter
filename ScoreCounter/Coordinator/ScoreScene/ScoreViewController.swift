@@ -4,12 +4,23 @@ import CoreData
 class ScoreViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    var fetchResultScore: NSFetchedResultsController<SavedScore>!
+    var fetchResultScore: NSFetchedResultsController<Score>!
     var model = ScoreModel()
-  
+    var game: NewGame
+    
+    init(game:NewGame){
+        self.game = game
+        super.init(nibName: nil, bundle: nil)
+     }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        tableView.delegate = self
         createBarButtonItem()
         registerCell()
         loadScore(with: context)
@@ -29,7 +40,7 @@ class ScoreViewController: UIViewController {
         }
         altert.addAction(UIAlertAction(title: title, style: .default, handler: { action in
             if let playerName = altert.textFields?.first?.text {
-                self.model.createScore(player: playerName, points: 0)
+                self.model.createScore(player: playerName, points: 0, game: self.game)
             }
         }))
         
@@ -37,22 +48,32 @@ class ScoreViewController: UIViewController {
         loadScore(with: context)
     }
     
-    func registerCell() {
-        let nib = UINib(nibName: ScoreTableViewCell.identifier, bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: ScoreTableViewCell.identifier)
-    }
     func loadScore(with context: NSManagedObjectContext) {
-        let fetchRequest: NSFetchRequest<SavedScore> = SavedScore.fetchRequest()
-        let sortDescritor = NSSortDescriptor(key: "players", ascending: true)
+        let fetchRequest: NSFetchRequest<Score> = Score.fetchRequest()
+        let sortDescritor = NSSortDescriptor(key: "player", ascending: true)
+
+        guard let argPredicate = game.name else {
+            fatalError()
+        }
+
+        let predicate = NSPredicate(format: "gameName == %@", "\(argPredicate)")
+        fetchRequest.predicate = predicate
         fetchRequest.sortDescriptors = [sortDescritor]
         fetchResultScore = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         fetchResultScore.delegate = self
+
         do {
             try fetchResultScore.performFetch()
         } catch {
             print(error.localizedDescription)
         }
     }
+    
+    func registerCell() {
+        let nib = UINib(nibName: ScoreTableViewCell.identifier, bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: ScoreTableViewCell.identifier)
+    }
+    
 }
 
 extension ScoreViewController: UITableViewDataSource {
@@ -68,10 +89,51 @@ extension ScoreViewController: UITableViewDataSource {
         guard let playerScore = fetchResultScore.fetchedObjects?[indexPath.row] else {
             return cell
         }
-        cell.prepareCell(with: playerScore)
+        cell.prepareCell(with: playerScore, at: indexPath.row)
+        cell.delegate = self
         return cell
     }
+}
 
+extension ScoreViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            guard let game = fetchResultScore.fetchedObjects?[indexPath.row] else {return}
+            context.delete(game)
+            do {
+                try context.save()
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+}
+
+extension ScoreViewController: ScoreTableViewCellDelegate {
+    func plusPoint(index: Int) {
+        guard let game = fetchResultScore.fetchedObjects?[index] else { return }
+        let points = game.points
+        game.setValue(points + 1, forKey: "points")
+        do {
+            try context.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+
+    }
+    
+    func subtractPoint(index: Int) {
+        guard let game = fetchResultScore.fetchedObjects?[index] else { return }
+        let points = game.points
+        game.setValue(points - 1, forKey: "points")
+        do {
+            try context.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    
 }
 
 extension ScoreViewController: NSFetchedResultsControllerDelegate {

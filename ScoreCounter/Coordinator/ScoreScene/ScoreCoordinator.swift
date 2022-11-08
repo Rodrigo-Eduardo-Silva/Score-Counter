@@ -2,10 +2,12 @@ import UIKit
 
 class ScoreCoodinator: Coordinator {
     var navigationController: UINavigationController
+    var game: NewGame
        
     var childCoordinator: Coordinator?
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, game: NewGame) {
         self.navigationController = navigationController
+        self.game = game
     }
     
     func start() {
@@ -13,7 +15,7 @@ class ScoreCoodinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     private func showScoreViewController() -> ScoreViewController {
-        let viewcontroller = ScoreViewController()
+        let viewcontroller = ScoreViewController(game: game)
         
         return viewcontroller
     }
