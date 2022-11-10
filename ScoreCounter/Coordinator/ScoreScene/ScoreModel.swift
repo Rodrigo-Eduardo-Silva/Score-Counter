@@ -5,10 +5,11 @@ protocol ScoreModelDelegate: AnyObject {
 }
 class ScoreModel {
     var score: Score!
+    
     var fetchResultScore: NSFetchedResultsController<Score>!
-    func createScore(player: String, points: Int64,game: NewGame) {
+    func createScore(player: String, points: Int64, game: Score) {
         self.score = Score(context: context)
-        self.score.gameName = game.name
+        self.score.nameGame = game.nameGame
         self.score.player = player
         self.score.points = points
            print(game)

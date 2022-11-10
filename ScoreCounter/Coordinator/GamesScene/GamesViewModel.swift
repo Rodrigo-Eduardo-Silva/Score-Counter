@@ -3,10 +3,10 @@ import CoreData
 import Foundation
 
 class GamesViewModel {
-    var game: NewGame!
+    var game: Score!
     func createGame(game: String,date: Date) {
-        self.game = NewGame(context: context)
-        self.game.name = game
+        self.game = Score(context: context)
+        self.game.nameGame = game
         self.game.date = date
         do {
             try context.save()

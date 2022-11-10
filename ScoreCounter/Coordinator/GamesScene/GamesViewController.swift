@@ -3,14 +3,14 @@
 import UIKit
 import CoreData
 protocol GamesViewControllerDelegate: AnyObject {
-    func showScoreViewController(with game: NewGame)
+    func showScoreViewController(with game: Score)
 }
 
 class GamesViewController: UIViewController {
     weak var delegate: GamesViewControllerDelegate?
     @IBOutlet weak var tableView: UITableView!
     var model = GamesViewModel()
-    var fetchResultController: NSFetchedResultsController<NewGame>!
+    var fetchResultController: NSFetchedResultsController<Score>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +35,9 @@ class GamesViewController: UIViewController {
             textField.placeholder = "Ex: Partida de Dama"
         }
         altert.addAction(UIAlertAction(title: title, style: .default, handler: { action in
-            if let gameName = altert.textFields?.first?.text {
+            if let nameGame = altert.textFields?.first?.text {
                 let date = Date()
-                self.model.createGame(game: gameName, date: date)
+                self.model.createGame(game: nameGame, date: date)
             }
         }))
         
@@ -52,8 +52,8 @@ class GamesViewController: UIViewController {
     }
     
     func loadGames() {
-        let fetchRequest: NSFetchRequest<NewGame> = NewGame.fetchRequest()
-        let sortDescritor = NSSortDescriptor(key: "name", ascending: true)
+        let fetchRequest: NSFetchRequest<Score> = Score.fetchRequest()
+        let sortDescritor = NSSortDescriptor(key: "nameGame", ascending: true)
         fetchRequest.sortDescriptors = [sortDescritor]
         fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         fetchResultController.delegate = self
@@ -77,7 +77,7 @@ extension GamesViewController: UITableViewDataSource {
         guard let game = fetchResultController.fetchedObjects?[indexPath.row] else {
             return cell
         }
-        cell.textLabel?.text = game.name
+        cell.textLabel?.text = game.nameGame
         cell.detailTextLabel?.text = game.date?.formatted(date: .numeric, time: .omitted)
         return cell
     }

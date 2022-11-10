@@ -2,10 +2,10 @@ import UIKit
 
 class ScoreCoodinator: Coordinator {
     var navigationController: UINavigationController
-    var game: NewGame
+    var game: Score
        
     var childCoordinator: Coordinator?
-    init(navigationController: UINavigationController, game: NewGame) {
+    init(navigationController: UINavigationController, game: Score) {
         self.navigationController = navigationController
         self.game = game
     }
