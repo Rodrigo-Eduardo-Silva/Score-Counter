@@ -24,6 +24,7 @@ class ScoreViewController: UIViewController {
         createBarButtonItem()
         registerCell()
         loadScore(with: context)
+        test()
     }
     
     func createBarButtonItem() {
@@ -48,6 +49,22 @@ class ScoreViewController: UIViewController {
         loadScore(with: context)
     }
     
+    func test () {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Score")
+               do {
+                   let itens = try context.fetch(request)
+                   if !itens.isEmpty {
+                       for item in itens as![NSManagedObject] {
+                           if let name = item.value(forKey: "gameName") {
+                               print(name)
+                           }
+                       }
+                   }
+               } catch {
+       
+               }
+    }
+    
     func loadScore(with context: NSManagedObjectContext) {
         let fetchRequest: NSFetchRequest<Score> = Score.fetchRequest()
         let sortDescritor = NSSortDescriptor(key: "player", ascending: true)
@@ -56,8 +73,8 @@ class ScoreViewController: UIViewController {
             fatalError()
         }
 
-        let predicate = NSPredicate(format: "gameName == %@", "\(argPredicate)")
-        fetchRequest.predicate = predicate
+//        let predicate = NSPredicate(format: "gameName == %@", "\(argPredicate)")
+//        fetchRequest.predicate = predicate
         fetchRequest.sortDescriptors = [sortDescritor]
         fetchResultScore = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         fetchResultScore.delegate = self

@@ -9,7 +9,7 @@
         <attribute name="gameName" optional="YES" attributeType="String"/>
         <attribute name="player" optional="YES" attributeType="String"/>
         <attribute name="points" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NewGame" inverseName="score" inverseEntity="NewGame"/>
+        <relationship name="game" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="NewGame" inverseName="score" inverseEntity="NewGame"/>
     </entity>
     <elements>
         <element name="NewGame" positionX="-711" positionY="-180" width="128" height="74"/>

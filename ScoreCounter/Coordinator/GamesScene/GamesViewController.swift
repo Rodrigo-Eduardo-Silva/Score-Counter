@@ -11,7 +11,7 @@ class GamesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var model = GamesViewModel()
     var fetchResultController: NSFetchedResultsController<NewGame>!
-    
+    var fetchResultControllerScore: NSFetchedResultsController<Score>!
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -63,6 +63,30 @@ class GamesViewController: UIViewController {
             print(error.localizedDescription)
         }
     }
+    
+    func cascadeDelete(game: NewGame) {
+        let deleteName = game.name
+        let fetchRequest: NSFetchRequest<Score> = Score.fetchRequest()
+        let sortDescritor = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescritor]
+        fetchResultControllerScore = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        fetchResultControllerScore.delegate = self
+        
+        if let deletePlayer = fetchResultControllerScore.fetchedObjects {
+            for player in deletePlayer {
+                if player.gameName == deleteName {
+                    context.delete(player)
+                    print(player)
+                    do {
+                        try context.save()
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+          
+        }
+    }
 }
 
 extension GamesViewController: UITableViewDataSource {
@@ -88,6 +112,12 @@ extension GamesViewController: UITableViewDelegate {
         if editingStyle == .delete {
             guard let game = fetchResultController.fetchedObjects?[indexPath.row] else {return}
             context.delete(game)
+            cascadeDelete(game: game)
+            do {
+                try context.save()
+            } catch {
+                print(error.localizedDescription)
+            }
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
