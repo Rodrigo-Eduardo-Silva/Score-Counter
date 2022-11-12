@@ -73,8 +73,8 @@ class ScoreViewController: UIViewController {
             fatalError()
         }
 
-//        let predicate = NSPredicate(format: "gameName == %@", "\(argPredicate)")
-//        fetchRequest.predicate = predicate
+        let predicate = NSPredicate(format: "gameName == %@", "\(argPredicate)")
+        fetchRequest.predicate = predicate
         fetchRequest.sortDescriptors = [sortDescritor]
         fetchResultScore = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         fetchResultScore.delegate = self

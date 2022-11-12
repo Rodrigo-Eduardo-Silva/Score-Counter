@@ -10,16 +10,18 @@ class GamesViewController: UIViewController {
     weak var delegate: GamesViewControllerDelegate?
     @IBOutlet weak var tableView: UITableView!
     var model = GamesViewModel()
-    var fetchResultController: NSFetchedResultsController<NewGame>!
-    var fetchResultControllerScore: NSFetchedResultsController<Score>!
+    var fetchResultController: NSFetchedResultsController<NewGame>! {
+        model.fetchResultController
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-
+        model.delegate = self
         createBarButtonItem()
         registerCell()
-        loadGames()
+        model.loadGames()
     }
     
     func createBarButtonItem() {
@@ -42,7 +44,7 @@ class GamesViewController: UIViewController {
         }))
         
         present(altert, animated: true, completion: nil)
-        loadGames()
+        model.loadGames()
         
     }
     
@@ -51,47 +53,25 @@ class GamesViewController: UIViewController {
         tableView.register(nib, forCellReuseIdentifier: GamesTableViewCell.identifier)
     }
     
-    func loadGames() {
-        let fetchRequest: NSFetchRequest<NewGame> = NewGame.fetchRequest()
-        let sortDescritor = NSSortDescriptor(key: "name", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescritor]
-        fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-        fetchResultController.delegate = self
-        do {
-            try fetchResultController.performFetch()
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-    
-    func cascadeDelete(game: NewGame) {
-        let deleteName = game.name
-        let fetchRequest: NSFetchRequest<Score> = Score.fetchRequest()
-        let sortDescritor = NSSortDescriptor(key: "name", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescritor]
-        fetchResultControllerScore = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-        fetchResultControllerScore.delegate = self
-        
-        if let deletePlayer = fetchResultControllerScore.fetchedObjects {
-            for player in deletePlayer {
-                if player.gameName == deleteName {
-                    context.delete(player)
-                    print(player)
-                    do {
-                        try context.save()
-                    } catch {
-                        print(error.localizedDescription)
-                    }
-                }
-            }
-          
-        }
-    }
+//    func loadGames() {
+//        let fetchRequest: NSFetchRequest<NewGame> = NewGame.fetchRequest()
+//        let sortDescritor = NSSortDescriptor(key: "name", ascending: true)
+//        fetchRequest.sortDescriptors = [sortDescritor]
+//        fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+//        fetchResultController.delegate = self
+//        do {
+//            try fetchResultController.performFetch()
+//        } catch {
+//            print(error.localizedDescription)
+//        }
+//    }
+ 
 }
 
 extension GamesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = fetchResultController.fetchedObjects?.count ?? 0
+        
+      let count = fetchResultController.fetchedObjects?.count ?? 0
         return count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -110,15 +90,14 @@ extension GamesViewController: UITableViewDataSource {
 extension GamesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            guard let game = fetchResultController.fetchedObjects?[indexPath.row] else {return}
+        guard let game = fetchResultController.fetchedObjects?[indexPath.row] else {return}
             context.delete(game)
-            cascadeDelete(game: game)
-            do {
+              do {
                 try context.save()
             } catch {
                 print(error.localizedDescription)
             }
-        }
+         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let game = fetchResultController.fetchedObjects?[indexPath.row] else {
@@ -129,24 +108,38 @@ extension GamesViewController: UITableViewDelegate {
 
 }
 
-extension GamesViewController: NSFetchedResultsControllerDelegate {
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case .insert:
-            tableView.reloadData()
-        case .delete:
-            if let indexPath = indexPath {
-                tableView.deleteRows(at: [indexPath], with: .fade)
-            }
-        case .move:
-            tableView.reloadData()
-        case .update:
-            tableView.reloadData()
-        @unknown default:
-            print("erro")
-        }
+extension GamesViewController: GamesViewModelDelegate {
+    
+    func updateGames() {
+        tableView.reloadData()
+        print("Novo game adiciononado")
     }
+    
+    func deleteGames(index: IndexPath) {
+        tableView.deleteRows(at: [index], with: .fade)
+    }
+    
+    
 }
+
+//extension GamesViewController: NSFetchedResultsControllerDelegate {
+//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+//        switch type {
+//        case .insert:
+//            tableView.reloadData()
+//        case .delete:
+//            if let indexPath = indexPath {
+//                tableView.deleteRows(at: [indexPath], with: .fade)
+//            }
+//        case .move:
+//            tableView.reloadData()
+//        case .update:
+//            tableView.reloadData()
+//        @unknown default:
+//            print("erro")
+//        }
+//    }
+//}
 
 extension GamesViewController {
     var context: NSManagedObjectContext {

@@ -8,10 +8,11 @@ class ScoreModel {
     var fetchResultScore: NSFetchedResultsController<Score>!
     func createScore(player: String, points: Int64,game: NewGame) {
         self.score = Score(context: context)
+        self.score.game = game
         self.score.gameName = game.name
         self.score.player = player
         self.score.points = points
-           print(game)
+           print(score)
         do {
             try context.save()
         } catch {
