@@ -15,12 +15,10 @@ class GamesCoordinator: Coordinator {
     
     private func showGamesViewController() -> GamesViewController {
         let viewController = GamesViewController()
+        let model = GamesViewModel()
+        model.delegate = viewController
+        viewController.model = model
         viewController.delegate = self
-//        mainViewController.addChild(viewController)
-//        viewController.view.frame = mainViewController.view.frame
-//        mainViewController.view.addSubview(viewController.view)
-//        viewController.didMove(toParent: GamesViewController())
-
         return viewController
     }
 

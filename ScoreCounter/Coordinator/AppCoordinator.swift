@@ -14,10 +14,10 @@ class AppCoordinator: Coordinator {
         windows.frame = UIScreen.main.bounds
         windows.rootViewController = navigationController
         windows.makeKeyAndVisible()
-        starMainViewController(navigationController: navigationController)
+        makeGamesViewController(navigationController: navigationController)
     }
     
-    fileprivate func starMainViewController(navigationController: UINavigationController) {
+    fileprivate func makeGamesViewController(navigationController: UINavigationController) {
         let gamesCoordinator = GamesCoordinator(navigationController: navigationController)
         gamesCoordinator.start()
         childCoordinator = gamesCoordinator
