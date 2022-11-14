@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3363A3742908A8120051B5E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3363A3732908A8120051B5E9 /* AppDelegate.swift */; };
 		3363A3762908A8120051B5E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3363A3752908A8120051B5E9 /* SceneDelegate.swift */; };
-		3363A3782908A8120051B5E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3363A3772908A8120051B5E9 /* ViewController.swift */; };
 		3363A37E2908A8120051B5E9 /* ScoreCounter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3363A37C2908A8120051B5E9 /* ScoreCounter.xcdatamodeld */; };
 		3363A3802908A8130051B5E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3363A37F2908A8130051B5E9 /* Assets.xcassets */; };
 		3363A3832908A8130051B5E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3363A3812908A8130051B5E9 /* LaunchScreen.storyboard */; };
@@ -36,7 +35,6 @@
 		3363A3702908A8120051B5E9 /* ScoreCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScoreCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3363A3732908A8120051B5E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3363A3752908A8120051B5E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3363A3772908A8120051B5E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3363A37D2908A8120051B5E9 /* ScoreCounter.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ScoreCounter.xcdatamodel; sourceTree = "<group>"; };
 		3363A37F2908A8130051B5E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3363A3822908A8130051B5E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -92,7 +90,7 @@
 			children = (
 				3363A3732908A8120051B5E9 /* AppDelegate.swift */,
 				3363A3752908A8120051B5E9 /* SceneDelegate.swift */,
-				3363A3772908A8120051B5E9 /* ViewController.swift */,
+				33A1ABF12922C305004A4670 /* CoreDataShared.swift */,
 				3363A3982908C6A90051B5E9 /* Scenes */,
 				3363A38D2908AA470051B5E9 /* Coordinator */,
 				3363A37F2908A8130051B5E9 /* Assets.xcassets */,
@@ -151,7 +149,6 @@
 				33F8D08C2910707100718077 /* ScoreViewController.swift */,
 				33A77F532911ECF6001BBAC6 /* ScoreCoordinator.swift */,
 				33F8D090291071C300718077 /* ScoreModel.swift */,
-				33A1ABF12922C305004A4670 /* CoreDataShared.swift */,
 				33F8D08D2910707100718077 /* ScoreViewController.xib */,
 				33A77F502911DA15001BBAC6 /* ScoreTableViewCell.xib */,
 				33A77F4F2911DA15001BBAC6 /* ScoreTableViewCell.swift */,
@@ -233,7 +230,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3363A3782908A8120051B5E9 /* ViewController.swift in Sources */,
 				33A77F542911ECF6001BBAC6 /* ScoreCoordinator.swift in Sources */,
 				3363A3932908ADBE0051B5E9 /* MainCoordinator.swift in Sources */,
 				3363A37E2908A8120051B5E9 /* ScoreCounter.xcdatamodeld in Sources */,

@@ -35,12 +35,18 @@ class GamesViewController: UIViewController {
         altert.addTextField { textField in
             textField.placeholder = "Ex: Partida de Dama"
         }
-        altert.addAction(UIAlertAction(title: title, style: .default, handler: { action in
+        
+        let addGame = UIAlertAction(title: title, style: .default, handler: { action in
             if let gameName = altert.textFields?.first?.text {
                 let date = Date()
                 self.model?.createGame(game: gameName, date: date, context: self.context)
             }
-        }))
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        
+        altert.addAction(addGame)
+        altert.addAction(cancelAction)
         
         present(altert, animated: true, completion: nil)
         model?.loadGames(context: context)

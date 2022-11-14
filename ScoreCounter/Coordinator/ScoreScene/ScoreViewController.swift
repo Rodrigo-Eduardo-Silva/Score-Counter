@@ -41,12 +41,16 @@ class ScoreViewController: UIViewController {
         altert.addTextField { textField in
             
         }
-        altert.addAction(UIAlertAction(title: title, style: .default, handler: { action in
+        let addPlayer = UIAlertAction(title: title, style: .default, handler: { action in
             if let playerName = altert.textFields?.first?.text {
                 self.model?.createScore(player: playerName, points: 0, game: self.game,context: self.context)
             }
-        }))
+        })
         
+        let cancelAction =  UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        
+        altert.addAction(addPlayer)
+        altert.addAction(cancelAction)
         present(altert, animated: true, completion: nil)
         model?.loadScore(with: context, gameName: game)
     }
