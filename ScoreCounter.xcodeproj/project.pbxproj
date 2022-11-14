@@ -20,6 +20,7 @@
 		3363A3962908C61B0051B5E9 /* GamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3363A3942908C61B0051B5E9 /* GamesViewController.swift */; };
 		3363A3972908C61B0051B5E9 /* GamesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3363A3952908C61B0051B5E9 /* GamesViewController.xib */; };
 		3363A39B2908CF050051B5E9 /* GamesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3363A39A2908CF050051B5E9 /* GamesCoordinator.swift */; };
+		33A1ABF22922C305004A4670 /* CoreDataShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A1ABF12922C305004A4670 /* CoreDataShared.swift */; };
 		33A77F512911DA15001BBAC6 /* ScoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A77F4F2911DA15001BBAC6 /* ScoreTableViewCell.swift */; };
 		33A77F522911DA15001BBAC6 /* ScoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A77F502911DA15001BBAC6 /* ScoreTableViewCell.xib */; };
 		33A77F542911ECF6001BBAC6 /* ScoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A77F532911ECF6001BBAC6 /* ScoreCoordinator.swift */; };
@@ -47,6 +48,7 @@
 		3363A3942908C61B0051B5E9 /* GamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesViewController.swift; sourceTree = "<group>"; };
 		3363A3952908C61B0051B5E9 /* GamesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GamesViewController.xib; sourceTree = "<group>"; };
 		3363A39A2908CF050051B5E9 /* GamesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesCoordinator.swift; sourceTree = "<group>"; };
+		33A1ABF12922C305004A4670 /* CoreDataShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataShared.swift; sourceTree = "<group>"; };
 		33A77F4F2911DA15001BBAC6 /* ScoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTableViewCell.swift; sourceTree = "<group>"; };
 		33A77F502911DA15001BBAC6 /* ScoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScoreTableViewCell.xib; sourceTree = "<group>"; };
 		33A77F532911ECF6001BBAC6 /* ScoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCoordinator.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				33F8D08C2910707100718077 /* ScoreViewController.swift */,
 				33A77F532911ECF6001BBAC6 /* ScoreCoordinator.swift */,
 				33F8D090291071C300718077 /* ScoreModel.swift */,
+				33A1ABF12922C305004A4670 /* CoreDataShared.swift */,
 				33F8D08D2910707100718077 /* ScoreViewController.xib */,
 				33A77F502911DA15001BBAC6 /* ScoreTableViewCell.xib */,
 				33A77F4F2911DA15001BBAC6 /* ScoreTableViewCell.swift */,
@@ -235,6 +238,7 @@
 				3363A3932908ADBE0051B5E9 /* MainCoordinator.swift in Sources */,
 				3363A37E2908A8120051B5E9 /* ScoreCounter.xcdatamodeld in Sources */,
 				3363A38F2908AA780051B5E9 /* Coordinator.swift in Sources */,
+				33A1ABF22922C305004A4670 /* CoreDataShared.swift in Sources */,
 				3363A3962908C61B0051B5E9 /* GamesViewController.swift in Sources */,
 				33F8D08E2910707100718077 /* ScoreViewController.swift in Sources */,
 				33D97849290B4BE800400F5D /* GamesViewModel.swift in Sources */,

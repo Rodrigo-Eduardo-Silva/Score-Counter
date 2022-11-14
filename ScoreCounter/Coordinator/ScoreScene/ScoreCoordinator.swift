@@ -16,7 +16,8 @@ class ScoreCoodinator: Coordinator {
     }
     private func showScoreViewController() -> ScoreViewController {
         let viewcontroller = ScoreViewController(game: game)
-        
+        let model = ScoreModel()
+        viewcontroller.model = model
         return viewcontroller
     }
     

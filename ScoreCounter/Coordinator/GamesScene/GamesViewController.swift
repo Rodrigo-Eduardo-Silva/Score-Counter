@@ -20,7 +20,7 @@ class GamesViewController: UIViewController {
         tableView.dataSource = self
         createBarButtonItem()
         registerCell()
-        model?.loadGames()
+        model?.loadGames(context: context)
     }
     
     func createBarButtonItem() {
@@ -38,12 +38,12 @@ class GamesViewController: UIViewController {
         altert.addAction(UIAlertAction(title: title, style: .default, handler: { action in
             if let gameName = altert.textFields?.first?.text {
                 let date = Date()
-                self.model?.createGame(game: gameName, date: date)
+                self.model?.createGame(game: gameName, date: date, context: self.context)
             }
         }))
         
         present(altert, animated: true, completion: nil)
-        model?.loadGames()
+        model?.loadGames(context: context)
         
     }
     
@@ -62,6 +62,7 @@ extension GamesViewController: UITableViewDataSource {
              }
         return count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: GamesTableViewCell.identifier, for: indexPath) as? GamesTableViewCell else {
             fatalError()
@@ -83,6 +84,7 @@ extension GamesViewController: UITableViewDelegate {
             
         guard let game = fetchResultController.fetchedObjects?[indexPath.row] else {return}
             context.delete(game)
+            
               do {
                  try context.save()
             } catch {
@@ -90,6 +92,7 @@ extension GamesViewController: UITableViewDelegate {
             }
          }
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let game = fetchResultController.fetchedObjects?[indexPath.row] else {
            fatalError()
@@ -113,11 +116,3 @@ extension GamesViewController: GamesViewModelDelegate {
     
 }
 
-extension GamesViewController {
-    var context: NSManagedObjectContext {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            fatalError("No context object found")
-        }
-        return appDelegate.persistentContainer.viewContext
-    }
-}

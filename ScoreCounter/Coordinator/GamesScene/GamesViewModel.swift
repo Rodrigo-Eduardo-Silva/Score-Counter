@@ -1,16 +1,17 @@
 import UIKit
 import CoreData
 import Foundation
+
 protocol GamesViewModelDelegate: AnyObject {
     func updateGames()
     func deleteGames(index: IndexPath)
 }
 
 class GamesViewModel: NSObject {
-    var delegate: GamesViewModelDelegate?
+    weak var delegate: GamesViewModelDelegate?
     var game: NewGame!
     var fetchResultController: NSFetchedResultsController<NewGame>!
-    func createGame(game: String,date: Date) {
+    func createGame(game: String,date: Date,context: NSManagedObjectContext) {
         self.game = NewGame(context: context)
         self.game.name = game
         self.game.date = date
@@ -22,12 +23,13 @@ class GamesViewModel: NSObject {
         }
      }
     
-    func loadGames() {
+    func loadGames(context: NSManagedObjectContext) {
         let fetchRequest: NSFetchRequest<NewGame> = NewGame.fetchRequest()
         let sortDescritor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescritor]
         fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         fetchResultController.delegate = self
+        
         do {
             try fetchResultController.performFetch()
         } catch {
@@ -39,6 +41,7 @@ class GamesViewModel: NSObject {
 extension GamesViewModel: NSFetchedResultsControllerDelegate {
 
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
         switch type {
         case .insert:
             delegate?.updateGames()
@@ -53,15 +56,6 @@ extension GamesViewModel: NSFetchedResultsControllerDelegate {
         @unknown default:
             print("erro")
         }
-    }
-}
-
-extension GamesViewModel {
-    var context: NSManagedObjectContext {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            fatalError("No context object found")
-         }
-        return appDelegate.persistentContainer.viewContext
     }
 }
 
