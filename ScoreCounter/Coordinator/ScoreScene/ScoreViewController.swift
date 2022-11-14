@@ -9,6 +9,9 @@ class ScoreViewController: UIViewController {
         model?.fetchResultScore
     }
     var game: NewGame
+    var segmenteControll = UISegmentedControl(items: ["1","+5","+10","+100"])
+  
+    
     
     init(game:NewGame){
         self.game = game
@@ -27,8 +30,15 @@ class ScoreViewController: UIViewController {
         createBarButtonItem()
         registerCell()
         model?.loadScore(with: context, gameName: game)
+        configureSegmenteControll()
     }
-    
+           
+    func configureSegmenteControll() {
+        segmenteControll.selectedSegmentIndex = 0
+        segmenteControll.tintColor = .blue
+        segmenteControll.backgroundColor = .darkGray
+        self.navigationItem.titleView = segmenteControll
+    }
     func createBarButtonItem() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Player", style: .plain, target: self, action: #selector(addNewPlayer))
     }
@@ -99,8 +109,22 @@ extension ScoreViewController: UITableViewDelegate {
 extension ScoreViewController: ScoreTableViewCellDelegate {
     func plusPoint(index: Int) {
         guard let game = fetchResultScore.fetchedObjects?[index] else { return }
+        var plusSegment = 0
+        let segmenteControllIndex = segmenteControll.selectedSegmentIndex
+        if segmenteControllIndex == 0 {
+            plusSegment = 1
+        }
+        if segmenteControllIndex == 1 {
+            plusSegment = 5
+        }
+        if segmenteControllIndex == 2 {
+            plusSegment = 10
+        }
+        if segmenteControllIndex == 3 {
+            plusSegment = 100
+        }
         let points = game.points
-        game.setValue(points + 1, forKey: "points")
+        game.setValue(Int(points) + plusSegment, forKey: "points")
         
         do {
             try context.save()
@@ -111,8 +135,22 @@ extension ScoreViewController: ScoreTableViewCellDelegate {
     
     func subtractPoint(index: Int) {
         guard let game = fetchResultScore.fetchedObjects?[index] else { return }
+        var subtractSegment = 0
+        let segmenteControllIndex = segmenteControll.selectedSegmentIndex
+        if segmenteControllIndex == 0 {
+            subtractSegment = 1
+        }
+        if segmenteControllIndex == 1 {
+            subtractSegment = 5
+        }
+        if segmenteControllIndex == 2 {
+            subtractSegment = 10
+        }
+        if segmenteControllIndex == 3 {
+            subtractSegment = 100
+        }
         let points = game.points
-        game.setValue(points - 1, forKey: "points")
+        game.setValue(Int(points) - subtractSegment, forKey: "points")
         
         do {
             try context.save()
