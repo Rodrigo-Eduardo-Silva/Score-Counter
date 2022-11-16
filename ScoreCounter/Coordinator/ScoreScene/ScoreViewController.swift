@@ -11,12 +11,14 @@ class ScoreViewController: UIViewController {
     var game: NewGame
     var segmenteControll = UISegmentedControl(items: ["1","+5","+10","+100"])
   
-    
-    
     init(game:NewGame){
         self.game = game
         super.init(nibName: nil, bundle: nil)
      }
+    
+    deinit {
+        print("ScoreView Destruída")
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -31,16 +33,32 @@ class ScoreViewController: UIViewController {
         registerCell()
         model?.loadScore(with: context, gameName: game)
         configureSegmenteControll()
+        teste()
     }
            
     func configureSegmenteControll() {
         segmenteControll.selectedSegmentIndex = 0
         segmenteControll.tintColor = .blue
-        segmenteControll.backgroundColor = .darkGray
+        segmenteControll.backgroundColor = .blue
         self.navigationItem.titleView = segmenteControll
     }
     func createBarButtonItem() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Player", style: .plain, target: self, action: #selector(addNewPlayer))
+    }
+    func teste() {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Score")
+                do {
+                    let itens = try context.fetch(request)
+                    if !itens.isEmpty {
+                        for item in itens as![NSManagedObject] {
+                            if let name = item.value(forKey: "player") {
+                                print(name)
+                            }
+                        }
+                    }
+                } catch {
+        
+                }
     }
     
     @objc func addNewPlayer() {
@@ -51,7 +69,9 @@ class ScoreViewController: UIViewController {
         altert.addTextField { textField in
             
         }
-        let addPlayer = UIAlertAction(title: title, style: .default, handler: { action in
+        let addPlayer = UIAlertAction(title: title, style: .default, handler: {  [weak self] action in
+            guard let self = self else { return }
+            
             if let playerName = altert.textFields?.first?.text {
                 self.model?.createScore(player: playerName, points: 0, game: self.game,context: self.context)
             }

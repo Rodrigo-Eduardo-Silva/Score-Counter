@@ -10,7 +10,8 @@ class ScoreModel: NSObject {
     var score: Score!
     var fetchResultScore: NSFetchedResultsController<Score>!
     weak var delegate: ScoreModelDelegate?
-    func createScore(player: String, points: Int64,game: NewGame,context: NSManagedObjectContext) {
+    
+    func createScore(player: String, points: Int64, game: NewGame, context: NSManagedObjectContext) {
         self.score = Score(context: context)
         self.score.game = game
         self.score.gameName = game.name

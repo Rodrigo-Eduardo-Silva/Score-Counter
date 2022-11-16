@@ -24,7 +24,7 @@ class GamesViewController: UIViewController {
     }
     
     func createBarButtonItem() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addNewGame))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Game", style: .plain, target: self, action: #selector(addNewGame))
     }
 
     @objc func addNewGame(){
@@ -59,7 +59,7 @@ class GamesViewController: UIViewController {
     }
     
 }
-
+// MARK: - Table view data source
 extension GamesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -77,26 +77,59 @@ extension GamesViewController: UITableViewDataSource {
         guard let game = fetchResultController.fetchedObjects?[indexPath.row] else {
             return cell
         }
-        
         cell.textLabel?.text = game.name
         cell.detailTextLabel?.text = game.date?.formatted(date: .numeric, time: .omitted)
         return cell
     }
 }
-
+// MARK: - Table view delegate
 extension GamesViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//
+//        guard let game = fetchResultController.fetchedObjects?[indexPath.row] else {return}
+//            context.delete(game)
+//
+//              do {
+//                 try context.save()
+//            } catch {
+//                print(error.localizedDescription)
+//            }
+//         }
+//    }
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let reset = self.resetScore(index: indexPath)
+        let delete = self.deleteGame(index: indexPath)
+        let swipe = UISwipeActionsConfiguration(actions: [reset, delete])
+        return swipe
+    }
+    
+    private func resetScore(index: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .normal, title: "Reset") { [weak self] (_,_,_) in
+            guard let self = self else { return }
+            self.model?.resetScorePoint(context: self.context)
+        }
+        return action
+    }
+    
+    private func deleteGame(index: IndexPath) -> UIContextualAction {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Deletar"){  [weak self] _, _, _ in
             
-        guard let game = fetchResultController.fetchedObjects?[indexPath.row] else {return}
-            context.delete(game)
+            guard let self = self else { return }
             
-              do {
-                 try context.save()
-            } catch {
-                print(error.localizedDescription)
-            }
-         }
+            guard let game = self.fetchResultController.fetchedObjects?[index.row] else {
+                fatalError()
+                 }
+            self.context.delete(game)
+                
+                  do {
+                      try self.context.save()
+                } catch {
+                    print(error.localizedDescription)
+                }
+        }
+        return deleteAction
+    
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -105,20 +138,17 @@ extension GamesViewController: UITableViewDelegate {
         }
         delegate?.showScoreViewController(with: game)
     }
-
 }
-
+// MARK: - Game Model Delegate
 extension GamesViewController: GamesViewModelDelegate {
     
     func updateGames() {
         tableView.reloadData()
-        print("Novo game adiciononado")
     }
     
     func deleteGames(index: IndexPath) {
         tableView.deleteRows(at: [index], with: .fade)
+        
     }
-    
-    
-}
+ }
 

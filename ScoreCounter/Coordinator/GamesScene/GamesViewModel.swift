@@ -11,6 +11,7 @@ class GamesViewModel: NSObject {
     weak var delegate: GamesViewModelDelegate?
     var game: NewGame!
     var fetchResultController: NSFetchedResultsController<NewGame>!
+    
     func createGame(game: String,date: Date,context: NSManagedObjectContext) {
         self.game = NewGame(context: context)
         self.game.name = game
@@ -34,6 +35,20 @@ class GamesViewModel: NSObject {
             try fetchResultController.performFetch()
         } catch {
             print(error.localizedDescription)
+        }
+    }
+    
+    func resetScorePoint(context: NSManagedObjectContext) {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Score")
+        do {
+             let players = try context.fetch(request)
+                if !players.isEmpty {
+                    for player in players as! [NSManagedObject] {
+                        player.setValue(0, forKey: "points")
+                    }
+                }
+        } catch {
+            
         }
     }
 }
