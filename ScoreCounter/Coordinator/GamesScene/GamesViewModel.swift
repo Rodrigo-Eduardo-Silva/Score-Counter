@@ -26,8 +26,8 @@ class GamesViewModel: NSObject {
     
     func loadGames(context: NSManagedObjectContext) {
         let fetchRequest: NSFetchRequest<NewGame> = NewGame.fetchRequest()
-        let sortDescritor = NSSortDescriptor(key: "name", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescritor]
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
         fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         fetchResultController.delegate = self
         
@@ -38,17 +38,19 @@ class GamesViewModel: NSObject {
         }
     }
     
-    func resetScorePoint(context: NSManagedObjectContext) {
+    func resetScorePoint(context: NSManagedObjectContext,game: NewGame) {
+        guard let gameName = game.name else {
+            fatalError("Erro ao resetar Player")
+        }
+        let predicate = NSPredicate(format: "gameName == %@", "\(gameName)")
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Score")
+        request.predicate = predicate
         do {
-             let players = try context.fetch(request)
-                if !players.isEmpty {
-                    for player in players as! [NSManagedObject] {
-                        player.setValue(0, forKey: "points")
-                    }
-                }
+            guard let players = try context.fetch(request) as? [NSManagedObject]  else { return }
+            players.map{$0.setValue(0, forKey: "points")}
+            try context.save()
         } catch {
-            
+            print(error.localizedDescription)
         }
     }
 }

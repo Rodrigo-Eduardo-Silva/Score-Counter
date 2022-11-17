@@ -105,29 +105,35 @@ extension GamesViewController: UITableViewDelegate {
     }
     
     private func resetScore(index: IndexPath) -> UIContextualAction {
-        let action = UIContextualAction(style: .normal, title: "Reset") { [weak self] (_,_,_) in
+        let action = UIContextualAction(style: .normal, title: "") { [weak self] (_,_,_) in
             guard let self = self else { return }
-            self.model?.resetScorePoint(context: self.context)
+            guard let game = self.fetchResultController.fetchedObjects?[index.row] else {
+                fatalError()
+            }
+            
+            self.model?.resetScorePoint(context: self.context,game: game)
+            self.tableView.reloadData()
         }
+
+        action.image = UIImage(named: "reset")
         return action
     }
     
     private func deleteGame(index: IndexPath) -> UIContextualAction {
-        let deleteAction = UIContextualAction(style: .destructive, title: "Deletar"){  [weak self] _, _, _ in
-            
+        let deleteAction = UIContextualAction(style: .destructive, title: ""){  [weak self] (_,_,_) in
             guard let self = self else { return }
-            
             guard let game = self.fetchResultController.fetchedObjects?[index.row] else {
                 fatalError()
                  }
             self.context.delete(game)
-                
+         
                   do {
                       try self.context.save()
                 } catch {
                     print(error.localizedDescription)
                 }
         }
+        deleteAction.image = UIImage(systemName: "trash")
         return deleteAction
     
     }

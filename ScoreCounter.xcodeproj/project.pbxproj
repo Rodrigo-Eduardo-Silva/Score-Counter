@@ -24,6 +24,7 @@
 		33A77F522911DA15001BBAC6 /* ScoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A77F502911DA15001BBAC6 /* ScoreTableViewCell.xib */; };
 		33A77F542911ECF6001BBAC6 /* ScoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A77F532911ECF6001BBAC6 /* ScoreCoordinator.swift */; };
 		33D97849290B4BE800400F5D /* GamesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D97848290B4BE800400F5D /* GamesViewModel.swift */; };
+		33F4D0EF2925D85A00EDB482 /* reset.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F4D0EE2925D85A00EDB482 /* reset.png */; };
 		33F8D089291051BE00718077 /* GamesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F8D087291051BE00718077 /* GamesTableViewCell.swift */; };
 		33F8D08A291051BE00718077 /* GamesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33F8D088291051BE00718077 /* GamesTableViewCell.xib */; };
 		33F8D08E2910707100718077 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F8D08C2910707100718077 /* ScoreViewController.swift */; };
@@ -51,6 +52,7 @@
 		33A77F502911DA15001BBAC6 /* ScoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScoreTableViewCell.xib; sourceTree = "<group>"; };
 		33A77F532911ECF6001BBAC6 /* ScoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCoordinator.swift; sourceTree = "<group>"; };
 		33D97848290B4BE800400F5D /* GamesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesViewModel.swift; sourceTree = "<group>"; };
+		33F4D0EE2925D85A00EDB482 /* reset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reset.png; sourceTree = "<group>"; };
 		33F8D087291051BE00718077 /* GamesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesTableViewCell.swift; sourceTree = "<group>"; };
 		33F8D088291051BE00718077 /* GamesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GamesTableViewCell.xib; sourceTree = "<group>"; };
 		33F8D08C2910707100718077 /* ScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				3363A3982908C6A90051B5E9 /* Scenes */,
 				3363A38D2908AA470051B5E9 /* Coordinator */,
 				3363A37F2908A8130051B5E9 /* Assets.xcassets */,
+				33F4D0EE2925D85A00EDB482 /* reset.png */,
 				3363A3812908A8130051B5E9 /* LaunchScreen.storyboard */,
 				3363A3842908A8130051B5E9 /* Info.plist */,
 				3363A37C2908A8120051B5E9 /* ScoreCounter.xcdatamodeld */,
@@ -214,6 +217,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33F4D0EF2925D85A00EDB482 /* reset.png in Resources */,
 				33A77F522911DA15001BBAC6 /* ScoreTableViewCell.xib in Resources */,
 				3363A3832908A8130051B5E9 /* LaunchScreen.storyboard in Resources */,
 				3363A3802908A8130051B5E9 /* Assets.xcassets in Resources */,
