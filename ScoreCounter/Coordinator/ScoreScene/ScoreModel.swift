@@ -17,6 +17,7 @@ class ScoreModel: NSObject {
         self.score.gameName = game.name
         self.score.player = player
         self.score.points = points
+        self.score.idScore = game.idGame
         
         do {
             try context.save()
@@ -29,11 +30,11 @@ class ScoreModel: NSObject {
         let fetchRequest: NSFetchRequest<Score> = Score.fetchRequest()
         let sortDescritor = NSSortDescriptor(key: "player", ascending: true)
 
-        guard let argPredicate = gameName.name else {
+        guard let argPredicate = gameName.idGame else {
             fatalError()
         }
 
-        let predicate = NSPredicate(format: "gameName == %@", "\(argPredicate)")
+        let predicate = NSPredicate(format: "idScore == %@", "\(argPredicate)")
         fetchRequest.predicate = predicate
         fetchRequest.sortDescriptors = [sortDescritor]
         fetchResultScore = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)

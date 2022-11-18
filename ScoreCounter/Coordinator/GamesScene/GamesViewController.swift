@@ -59,7 +59,7 @@ class GamesViewController: UIViewController {
     }
     
 }
-// MARK: - Table view data source
+// MARK: - Table View Sata Source
 extension GamesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -82,21 +82,8 @@ extension GamesViewController: UITableViewDataSource {
         return cell
     }
 }
-// MARK: - Table view delegate
+// MARK: - Table View Delegate
 extension GamesViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//
-//        guard let game = fetchResultController.fetchedObjects?[indexPath.row] else {return}
-//            context.delete(game)
-//
-//              do {
-//                 try context.save()
-//            } catch {
-//                print(error.localizedDescription)
-//            }
-//         }
-//    }
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let reset = self.resetScore(index: indexPath)
         let delete = self.deleteGame(index: indexPath)
@@ -105,7 +92,7 @@ extension GamesViewController: UITableViewDelegate {
     }
     
     private func resetScore(index: IndexPath) -> UIContextualAction {
-        let action = UIContextualAction(style: .normal, title: "") { [weak self] (_,_,_) in
+        let resetAction = UIContextualAction(style: .normal, title: "") { [weak self] (_,_,_) in
             guard let self = self else { return }
             guard let game = self.fetchResultController.fetchedObjects?[index.row] else {
                 fatalError()
@@ -114,9 +101,8 @@ extension GamesViewController: UITableViewDelegate {
             self.model?.resetScorePoint(context: self.context,game: game)
             self.tableView.reloadData()
         }
-
-        action.image = UIImage(named: "reset")
-        return action
+        resetAction.image = UIImage(systemName: "restart")
+        return resetAction
     }
     
     private func deleteGame(index: IndexPath) -> UIContextualAction {
@@ -133,6 +119,7 @@ extension GamesViewController: UITableViewDelegate {
                     print(error.localizedDescription)
                 }
         }
+        deleteAction.backgroundColor = .blue
         deleteAction.image = UIImage(systemName: "trash")
         return deleteAction
     

@@ -16,6 +16,7 @@ class GamesViewModel: NSObject {
         self.game = NewGame(context: context)
         self.game.name = game
         self.game.date = date
+        self.game.idGame = UUID().uuidString
         do {
             try context.save()
             

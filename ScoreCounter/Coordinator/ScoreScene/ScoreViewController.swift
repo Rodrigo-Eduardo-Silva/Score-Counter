@@ -42,9 +42,11 @@ class ScoreViewController: UIViewController {
         segmenteControll.backgroundColor = .blue
         self.navigationItem.titleView = segmenteControll
     }
+    
     func createBarButtonItem() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Player", style: .plain, target: self, action: #selector(addNewPlayer))
     }
+    
     func teste() {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Score")
                 do {
@@ -90,7 +92,7 @@ class ScoreViewController: UIViewController {
         tableView.register(nib, forCellReuseIdentifier: ScoreTableViewCell.identifier)
     }
 }
-
+// MARK: - Table View Data Source
 extension ScoreViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard  let count = fetchResultScore.fetchedObjects?.count else {
@@ -111,19 +113,55 @@ extension ScoreViewController: UITableViewDataSource {
         return cell
     }
 }
-
+// MARK: - Table view delegate
 extension ScoreViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            guard let game = fetchResultScore.fetchedObjects?[indexPath.row] else {return}
-            context.delete(game)
-            do {
-                try context.save()
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            guard let game = fetchResultScore.fetchedObjects?[indexPath.row] else {return}
+//            context.delete(game)
+//            do {
+//                try context.save()
+//            } catch {
+//                print(error.localizedDescription)
+//            }
+//        }
+//    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let reset = self.resetScorePlayer(index: indexPath)
+        let delete = self.deleteGame(index: indexPath)
+        let swipe = UISwipeActionsConfiguration(actions: [reset,delete])
+        return swipe
     }
+    
+    private func resetScorePlayer(index: IndexPath) -> UIContextualAction {
+        let resetAction = UIContextualAction(style: .normal, title: "") { [weak self] (_,_,_) in
+            guard let self = self else { return }
+            guard let player = self.fetchResultScore.fetchedObjects?[index.row] else { return }
+            player.setValue( 0, forKey: "points")
+        }
+        resetAction.image = UIImage(systemName: "restart")
+        return resetAction
+    }
+    
+    private func deleteGame(index: IndexPath) -> UIContextualAction {
+        let deleteAction = UIContextualAction(style: .destructive, title: ""){  [weak self] (_,_,_) in
+            guard let self = self else { return }
+            guard let game = self.fetchResultScore.fetchedObjects?[index.row] else { return }
+            self.context.delete(game)
+         
+                  do {
+                      try self.context.save()
+                } catch {
+                    print(error.localizedDescription)
+                }
+        }
+        deleteAction.backgroundColor = .blue
+        deleteAction.image = UIImage(systemName: "trash")
+        return deleteAction
+    
+    }
+    
 }
 
 extension ScoreViewController: ScoreTableViewCellDelegate {
