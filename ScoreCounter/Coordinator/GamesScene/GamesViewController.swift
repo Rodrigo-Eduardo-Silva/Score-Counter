@@ -4,6 +4,7 @@ import UIKit
 import CoreData
 protocol GamesViewControllerDelegate: AnyObject {
     func showScoreViewController(with game: NewGame)
+    func showMenuViewController()
 }
 
 class GamesViewController: UIViewController {
@@ -25,9 +26,14 @@ class GamesViewController: UIViewController {
     
     func createBarButtonItem() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Game", style: .plain, target: self, action: #selector(addNewGame))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"), style: .plain, target: self, action: #selector(showMenu))
+    }
+    
+    @objc func showMenu() {
+        delegate?.showMenuViewController()
     }
 
-    @objc func addNewGame(){
+    @objc func addNewGame() {
         let title = "Adicionar Novo Game"
         let message = "Informe o Nome do Jogo"
         
@@ -57,6 +63,7 @@ class GamesViewController: UIViewController {
         let nib = UINib(nibName: GamesTableViewCell.identifier, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: GamesTableViewCell.identifier)
     }
+    
     
 }
 // MARK: - Table View Sata Source

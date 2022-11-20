@@ -12,7 +12,7 @@ class ScoreTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var minusButton: UIButton!
-
+    @IBOutlet weak var segmentControlteste: UISegmentedControl!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -35,7 +35,7 @@ class ScoreTableViewCell: UITableViewCell {
     
     @IBAction func minusScore(_ sender: Any) {
         delegate?.subtractPoint(index: index)
-    }
+   }
     
     
 }

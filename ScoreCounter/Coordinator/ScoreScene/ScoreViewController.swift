@@ -33,34 +33,28 @@ class ScoreViewController: UIViewController {
         registerCell()
         model?.loadScore(with: context, gameName: game)
         configureSegmenteControll()
-        teste()
+        navigationItem.title = game.name
     }
            
     func configureSegmenteControll() {
         segmenteControll.selectedSegmentIndex = 0
         segmenteControll.tintColor = .blue
         segmenteControll.backgroundColor = .blue
-        self.navigationItem.titleView = segmenteControll
+        self.tableView.tableHeaderView = segmenteControll
     }
     
     func createBarButtonItem() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Player", style: .plain, target: self, action: #selector(addNewPlayer))
+    let addPlayeButton = UIBarButtonItem(title: "Add Player", style: .plain, target: self, action: #selector(addNewPlayer))
+    let showSegmentIncrement = UIBarButtonItem(image: UIImage(systemName: "arrowtriangle.left.and.line.vertical.and.arrowtriangle.right"), style: .plain, target: self, action: #selector(showIncrement))
+        navigationItem.rightBarButtonItems = [addPlayeButton,showSegmentIncrement]
     }
-    
-    func teste() {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Score")
-                do {
-                    let itens = try context.fetch(request)
-                    if !itens.isEmpty {
-                        for item in itens as![NSManagedObject] {
-                            if let name = item.value(forKey: "player") {
-                                print(name)
-                            }
-                        }
-                    }
-                } catch {
-        
-                }
+   
+    @objc func showIncrement(){
+        if tableView.tableHeaderView == nil {
+            tableView.tableHeaderView = segmenteControll
+        } else {
+            tableView.tableHeaderView = nil
+        }
     }
     
     @objc func addNewPlayer() {
@@ -71,7 +65,7 @@ class ScoreViewController: UIViewController {
         altert.addTextField { textField in
             
         }
-        let addPlayer = UIAlertAction(title: title, style: .default, handler: {  [weak self] action in
+        let addPlayer = UIAlertAction(title: title, style: .default, handler: {  [weak self] _ in
             guard let self = self else { return }
             
             if let playerName = altert.textFields?.first?.text {
@@ -115,18 +109,7 @@ extension ScoreViewController: UITableViewDataSource {
 }
 // MARK: - Table view delegate
 extension ScoreViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            guard let game = fetchResultScore.fetchedObjects?[indexPath.row] else {return}
-//            context.delete(game)
-//            do {
-//                try context.save()
-//            } catch {
-//                print(error.localizedDescription)
-//            }
-//        }
-//    }
-    
+
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let reset = self.resetScorePlayer(index: indexPath)
         let delete = self.deleteGame(index: indexPath)
@@ -159,7 +142,6 @@ extension ScoreViewController: UITableViewDelegate {
         deleteAction.backgroundColor = .blue
         deleteAction.image = UIImage(systemName: "trash")
         return deleteAction
-    
     }
     
 }

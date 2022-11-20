@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		333F21D42929ACC00075EA40 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333F21D22929ACC00075EA40 /* AboutViewController.swift */; };
+		333F21D52929ACC00075EA40 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 333F21D32929ACC00075EA40 /* AboutViewController.xib */; };
+		333F21D82929B2E70075EA40 /* AboutCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333F21D72929B2E70075EA40 /* AboutCoordinator.swift */; };
 		3363A3742908A8120051B5E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3363A3732908A8120051B5E9 /* AppDelegate.swift */; };
 		3363A3762908A8120051B5E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3363A3752908A8120051B5E9 /* SceneDelegate.swift */; };
 		3363A37E2908A8120051B5E9 /* ScoreCounter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3363A37C2908A8120051B5E9 /* ScoreCounter.xcdatamodeld */; };
@@ -33,6 +36,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		333F21D22929ACC00075EA40 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		333F21D32929ACC00075EA40 /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
+		333F21D72929B2E70075EA40 /* AboutCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCoordinator.swift; sourceTree = "<group>"; };
 		3363A3702908A8120051B5E9 /* ScoreCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScoreCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3363A3732908A8120051B5E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3363A3752908A8120051B5E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +77,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		333F21D62929AE130075EA40 /* AboutScene */ = {
+			isa = PBXGroup;
+			children = (
+				333F21D22929ACC00075EA40 /* AboutViewController.swift */,
+				333F21D32929ACC00075EA40 /* AboutViewController.xib */,
+				333F21D72929B2E70075EA40 /* AboutCoordinator.swift */,
+			);
+			path = AboutScene;
+			sourceTree = "<group>";
+		};
 		3363A3672908A8120051B5E9 = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +141,7 @@
 		3363A3982908C6A90051B5E9 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				333F21D62929AE130075EA40 /* AboutScene */,
 				33F8D08B2910702A00718077 /* ScoreScene */,
 				3363A38C2908AA2F0051B5E9 /* MainView */,
 				3363A3992908C6BF0051B5E9 /* GamesScene */,
@@ -219,6 +236,7 @@
 			files = (
 				33F4D0EF2925D85A00EDB482 /* reset.png in Resources */,
 				33A77F522911DA15001BBAC6 /* ScoreTableViewCell.xib in Resources */,
+				333F21D52929ACC00075EA40 /* AboutViewController.xib in Resources */,
 				3363A3832908A8130051B5E9 /* LaunchScreen.storyboard in Resources */,
 				3363A3802908A8130051B5E9 /* Assets.xcassets in Resources */,
 				3363A3972908C61B0051B5E9 /* GamesViewController.xib in Resources */,
@@ -243,8 +261,10 @@
 				33F8D08E2910707100718077 /* ScoreViewController.swift in Sources */,
 				33D97849290B4BE800400F5D /* GamesViewModel.swift in Sources */,
 				3363A3742908A8120051B5E9 /* AppDelegate.swift in Sources */,
+				333F21D42929ACC00075EA40 /* AboutViewController.swift in Sources */,
 				33F8D089291051BE00718077 /* GamesTableViewCell.swift in Sources */,
 				3363A39B2908CF050051B5E9 /* GamesCoordinator.swift in Sources */,
+				333F21D82929B2E70075EA40 /* AboutCoordinator.swift in Sources */,
 				33A77F512911DA15001BBAC6 /* ScoreTableViewCell.swift in Sources */,
 				33F8D091291071C300718077 /* ScoreModel.swift in Sources */,
 				3363A3762908A8120051B5E9 /* SceneDelegate.swift in Sources */,

@@ -15,10 +15,10 @@ class ScoreCoodinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     private func showScoreViewController() -> ScoreViewController {
-        let viewcontroller = ScoreViewController(game: game)
+        let viewController = ScoreViewController(game: game)
         let model = ScoreModel()
-        viewcontroller.model = model
-        return viewcontroller
+        viewController.model = model
+        return viewController
     }
     
 }
