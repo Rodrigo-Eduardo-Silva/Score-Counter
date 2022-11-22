@@ -40,8 +40,7 @@ class ScoreViewController: UIViewController {
         segmenteControll.selectedSegmentIndex = 0
         segmenteControll.tintColor = .blue
         segmenteControll.backgroundColor = .blue
-        self.tableView.tableHeaderView = segmenteControll
-    }
+     }
     
     func createBarButtonItem() {
     let addPlayeButton = UIBarButtonItem(title: "Add Player", style: .plain, target: self, action: #selector(addNewPlayer))

@@ -92,6 +92,7 @@ extension GamesViewController: UITableViewDataSource {
 // MARK: - Table View Delegate
 extension GamesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+ 
         let reset = self.resetScore(index: indexPath)
         let delete = self.deleteGame(index: indexPath)
         let swipe = UISwipeActionsConfiguration(actions: [reset, delete])
@@ -104,13 +105,25 @@ extension GamesViewController: UITableViewDelegate {
             guard let game = self.fetchResultController.fetchedObjects?[index.row] else {
                 fatalError()
             }
+            guard let gameName = game.name else { return }
+            let alert = UIAlertController(title: "Score Counter", message: "Reinicializar todos os Scores do Game", preferredStyle: .actionSheet)
             
-            self.model?.resetScorePoint(context: self.context,game: game)
-            self.tableView.reloadData()
+            let resetAction = UIAlertAction(title: "Reinicializar Score do \(String(describing: gameName))", style: .destructive) { [weak self] action in
+                guard let self = self else { return }
+                self.model?.resetScorePoint(context: self.context,game: game)
+                self.tableView.reloadData()
+            }
+            
+            let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+            alert.addAction(resetAction)
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
         }
+        
         resetAction.image = UIImage(systemName: "restart")
         return resetAction
     }
+    
     
     private func deleteGame(index: IndexPath) -> UIContextualAction {
         let deleteAction = UIContextualAction(style: .destructive, title: ""){  [weak self] (_,_,_) in
