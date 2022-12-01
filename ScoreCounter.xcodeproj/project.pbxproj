@@ -10,6 +10,7 @@
 		333F21D42929ACC00075EA40 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333F21D22929ACC00075EA40 /* AboutViewController.swift */; };
 		333F21D52929ACC00075EA40 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 333F21D32929ACC00075EA40 /* AboutViewController.xib */; };
 		333F21D82929B2E70075EA40 /* AboutCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333F21D72929B2E70075EA40 /* AboutCoordinator.swift */; };
+		3350FA43292EEAD4006E75FD /* score.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3350FA42292EEAD4006E75FD /* score.mp3 */; };
 		3363A3742908A8120051B5E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3363A3732908A8120051B5E9 /* AppDelegate.swift */; };
 		3363A3762908A8120051B5E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3363A3752908A8120051B5E9 /* SceneDelegate.swift */; };
 		3363A37E2908A8120051B5E9 /* ScoreCounter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3363A37C2908A8120051B5E9 /* ScoreCounter.xcdatamodeld */; };
@@ -22,6 +23,7 @@
 		3363A3962908C61B0051B5E9 /* GamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3363A3942908C61B0051B5E9 /* GamesViewController.swift */; };
 		3363A3972908C61B0051B5E9 /* GamesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3363A3952908C61B0051B5E9 /* GamesViewController.xib */; };
 		3363A39B2908CF050051B5E9 /* GamesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3363A39A2908CF050051B5E9 /* GamesCoordinator.swift */; };
+		3380AEA1292C4B2500BC8549 /* ServiceEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380AEA0292C4B2500BC8549 /* ServiceEmail.swift */; };
 		33A1ABF22922C305004A4670 /* CoreDataShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A1ABF12922C305004A4670 /* CoreDataShared.swift */; };
 		33A77F512911DA15001BBAC6 /* ScoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A77F4F2911DA15001BBAC6 /* ScoreTableViewCell.swift */; };
 		33A77F522911DA15001BBAC6 /* ScoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A77F502911DA15001BBAC6 /* ScoreTableViewCell.xib */; };
@@ -39,6 +41,7 @@
 		333F21D22929ACC00075EA40 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		333F21D32929ACC00075EA40 /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
 		333F21D72929B2E70075EA40 /* AboutCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCoordinator.swift; sourceTree = "<group>"; };
+		3350FA42292EEAD4006E75FD /* score.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = score.mp3; sourceTree = "<group>"; };
 		3363A3702908A8120051B5E9 /* ScoreCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScoreCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3363A3732908A8120051B5E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3363A3752908A8120051B5E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +56,7 @@
 		3363A3942908C61B0051B5E9 /* GamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesViewController.swift; sourceTree = "<group>"; };
 		3363A3952908C61B0051B5E9 /* GamesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GamesViewController.xib; sourceTree = "<group>"; };
 		3363A39A2908CF050051B5E9 /* GamesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesCoordinator.swift; sourceTree = "<group>"; };
+		3380AEA0292C4B2500BC8549 /* ServiceEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceEmail.swift; sourceTree = "<group>"; };
 		33A1ABF12922C305004A4670 /* CoreDataShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataShared.swift; sourceTree = "<group>"; };
 		33A77F4F2911DA15001BBAC6 /* ScoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTableViewCell.swift; sourceTree = "<group>"; };
 		33A77F502911DA15001BBAC6 /* ScoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScoreTableViewCell.xib; sourceTree = "<group>"; };
@@ -83,6 +87,7 @@
 				333F21D22929ACC00075EA40 /* AboutViewController.swift */,
 				333F21D32929ACC00075EA40 /* AboutViewController.xib */,
 				333F21D72929B2E70075EA40 /* AboutCoordinator.swift */,
+				3380AEA0292C4B2500BC8549 /* ServiceEmail.swift */,
 			);
 			path = AboutScene;
 			sourceTree = "<group>";
@@ -113,6 +118,7 @@
 				3363A38D2908AA470051B5E9 /* Coordinator */,
 				3363A37F2908A8130051B5E9 /* Assets.xcassets */,
 				33F4D0EE2925D85A00EDB482 /* reset.png */,
+				3350FA42292EEAD4006E75FD /* score.mp3 */,
 				3363A3812908A8130051B5E9 /* LaunchScreen.storyboard */,
 				3363A3842908A8130051B5E9 /* Info.plist */,
 				3363A37C2908A8120051B5E9 /* ScoreCounter.xcdatamodeld */,
@@ -186,6 +192,7 @@
 				3363A36C2908A8120051B5E9 /* Sources */,
 				3363A36D2908A8120051B5E9 /* Frameworks */,
 				3363A36E2908A8120051B5E9 /* Resources */,
+				33AE6B9529383AB8000A9CD1 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -235,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33F4D0EF2925D85A00EDB482 /* reset.png in Resources */,
+				3350FA43292EEAD4006E75FD /* score.mp3 in Resources */,
 				33A77F522911DA15001BBAC6 /* ScoreTableViewCell.xib in Resources */,
 				333F21D52929ACC00075EA40 /* AboutViewController.xib in Resources */,
 				3363A3832908A8130051B5E9 /* LaunchScreen.storyboard in Resources */,
@@ -246,6 +254,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		33AE6B9529383AB8000A9CD1 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3363A36C2908A8120051B5E9 /* Sources */ = {
@@ -269,6 +298,7 @@
 				33F8D091291071C300718077 /* ScoreModel.swift in Sources */,
 				3363A3762908A8120051B5E9 /* SceneDelegate.swift in Sources */,
 				3363A38B2908A9680051B5E9 /* MainViewController.swift in Sources */,
+				3380AEA1292C4B2500BC8549 /* ServiceEmail.swift in Sources */,
 				3363A3912908ACBD0051B5E9 /* AppCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,8 +445,9 @@
 				INFOPLIST_FILE = ScoreCounter/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -442,8 +473,9 @@
 				INFOPLIST_FILE = ScoreCounter/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

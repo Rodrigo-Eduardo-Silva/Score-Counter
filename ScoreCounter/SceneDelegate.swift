@@ -1,16 +1,16 @@
 import UIKit
+// swiftlint:disable line_length
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     var coordinator: AppCoordinator?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        
+
         guard let windowsScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowsScene)
-        
+
         let navigationController = UINavigationController()
         coordinator = AppCoordinator(windows: window, navigationController: navigationController)
         coordinator?.start()
@@ -48,6 +48,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
 
-
 }
-

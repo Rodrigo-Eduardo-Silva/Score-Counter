@@ -1,5 +1,6 @@
 import UIKit
 import CoreData
+// swiftlint:disable line_length
 
 protocol ScoreModelDelegate: AnyObject {
     func updateScore()
@@ -10,7 +11,7 @@ class ScoreModel: NSObject {
     var score: Score!
     var fetchResultScore: NSFetchedResultsController<Score>!
     weak var delegate: ScoreModelDelegate?
-    
+
     func createScore(player: String, points: Int64, game: NewGame, context: NSManagedObjectContext) {
         self.score = Score(context: context)
         self.score.game = game
@@ -18,14 +19,14 @@ class ScoreModel: NSObject {
         self.score.player = player
         self.score.points = points
         self.score.idScore = game.idGame
-        
+
         do {
             try context.save()
         } catch {
             print(error.localizedDescription)
         }
     }
-    
+
     func loadScore(with context: NSManagedObjectContext, gameName: NewGame) {
         let fetchRequest: NSFetchRequest<Score> = Score.fetchRequest()
         let sortDescritor = NSSortDescriptor(key: "player", ascending: true)
@@ -50,7 +51,7 @@ class ScoreModel: NSObject {
 
 extension ScoreModel: NSFetchedResultsControllerDelegate {
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        
+
         switch type {
         case .insert:
             delegate?.updateScore()
@@ -62,10 +63,8 @@ extension ScoreModel: NSFetchedResultsControllerDelegate {
             delegate?.updateScore()
         case .update:
             delegate?.updateScore()
-           @unknown default:
+        @unknown default:
             print("erro")
         }
     }
 }
-
-

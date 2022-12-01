@@ -6,10 +6,10 @@ protocol MainViewControllerDelegate: AnyObject {
 
 class MainViewController: UIViewController {
     var delegate: MainViewControllerDelegate?
-    init(){
+    init() {
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -17,6 +17,6 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .green
         delegate?.showGamesViewController(view: view)
-       
+
     }
 }

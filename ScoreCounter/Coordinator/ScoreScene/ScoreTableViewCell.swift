@@ -28,14 +28,13 @@ class ScoreTableViewCell: UITableViewCell {
         nameLabel.text = scorePlayer.player
         scoreLabel.text = scorePlayer.points.description
     }
-    
+
     @IBAction func plusScore(_ sender: Any) {
         delegate?.plusPoint(index: index)
     }
-    
+
     @IBAction func minusScore(_ sender: Any) {
         delegate?.subtractPoint(index: index)
    }
-    
-    
+
 }
