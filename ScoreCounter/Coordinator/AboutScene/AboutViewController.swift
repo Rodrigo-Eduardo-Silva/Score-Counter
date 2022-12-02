@@ -1,17 +1,41 @@
 import UIKit
 import MessageUI
+// swiftlint:disable line_length
 
 class AboutViewController: UIViewController {
 
-    var controller =  MFMessageComposeViewController()
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func sendEmail(_ sender: Any) {
-        present(controller, animated: true, completion: nil)
+        let viewController = configureEmail()
+        present(viewController, animated: true, completion: nil)
     }
 
+    func configureEmail() -> MFMailComposeViewController {
+        let composer = MFMailComposeViewController()
+        composer.setToRecipients(["rodrigoeduardosilv@gmail.com"])
+        composer.setSubject("Feebdback Score Counter")
+        composer.setMessageBody("Sua Mensagem", isHTML: false)
+        return composer
+    }
+}
+
+extension AboutViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        switch result {
+        case .cancelled:
+            navigationController?.popViewController(animated: true)
+        case .saved:
+            navigationController?.popViewController(animated: true)
+        case .sent:
+            print("email enviado")
+        case .failed:
+            print("falha ao enviar email")
+        @unknown default:
+            break
+        }
+    }
 }

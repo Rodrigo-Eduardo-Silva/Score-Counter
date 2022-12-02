@@ -52,7 +52,8 @@ class GamesViewModel: NSObject {
         request.predicate = predicate
         do {
             guard let players = try context.fetch(request) as? [NSManagedObject]  else { return }
-            players.map {$0.setValue(0, forKey: "points")}
+            print(players)
+           _ = players.map {$0.setValue(0, forKey: "points")}
             try context.save()
         } catch {
             print(error.localizedDescription)
