@@ -85,15 +85,15 @@
                             <rect key="frame" x="16" y="293" width="380" height="128"/>
                             <subviews>
                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7LD-qa-xDa">
-                                    <rect key="frame" x="165.5" y="76" width="51" height="31"/>
+                                    <rect key="frame" x="165.5" y="79" width="51" height="31"/>
                                     <color key="onTintColor" red="0.2097151361" green="0.69802295920000001" blue="0.99367559520000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <connections>
                                         <action selector="changeSoundState:" destination="-1" eventType="valueChanged" id="KhZ-X4-Ba8"/>
                                     </connections>
                                 </switch>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ligar/Desligar Som" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQ3-Lb-FlY">
-                                    <rect key="frame" x="40" y="35" width="300" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <rect key="frame" x="40" y="35" width="300" height="24"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>

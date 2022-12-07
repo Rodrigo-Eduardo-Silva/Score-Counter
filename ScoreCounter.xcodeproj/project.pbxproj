@@ -24,6 +24,7 @@
 		3363A3972908C61B0051B5E9 /* GamesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3363A3952908C61B0051B5E9 /* GamesViewController.xib */; };
 		3363A39B2908CF050051B5E9 /* GamesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3363A39A2908CF050051B5E9 /* GamesCoordinator.swift */; };
 		3368D42C294007EA00DA1AC0 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3368D42B294007EA00DA1AC0 /* Configuration.swift */; };
+		3374C1FC29415D1D00AC3CDA /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3374C1FB29415D1D00AC3CDA /* Settings.bundle */; };
 		3380AEA1292C4B2500BC8549 /* ServiceEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380AEA0292C4B2500BC8549 /* ServiceEmail.swift */; };
 		33A1ABF22922C305004A4670 /* CoreDataShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A1ABF12922C305004A4670 /* CoreDataShared.swift */; };
 		33A77F512911DA15001BBAC6 /* ScoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A77F4F2911DA15001BBAC6 /* ScoreTableViewCell.swift */; };
@@ -57,6 +58,7 @@
 		3363A3952908C61B0051B5E9 /* GamesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GamesViewController.xib; sourceTree = "<group>"; };
 		3363A39A2908CF050051B5E9 /* GamesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesCoordinator.swift; sourceTree = "<group>"; };
 		3368D42B294007EA00DA1AC0 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		3374C1FB29415D1D00AC3CDA /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = ScoreCounter/Settings.bundle; sourceTree = SOURCE_ROOT; };
 		3380AEA0292C4B2500BC8549 /* ServiceEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceEmail.swift; sourceTree = "<group>"; };
 		33A1ABF12922C305004A4670 /* CoreDataShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataShared.swift; sourceTree = "<group>"; };
 		33A77F4F2911DA15001BBAC6 /* ScoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTableViewCell.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				3363A3732908A8120051B5E9 /* AppDelegate.swift */,
 				3363A3752908A8120051B5E9 /* SceneDelegate.swift */,
 				33A1ABF12922C305004A4670 /* CoreDataShared.swift */,
+				3374C1FB29415D1D00AC3CDA /* Settings.bundle */,
 				3363A3982908C6A90051B5E9 /* Scenes */,
 				3363A38D2908AA470051B5E9 /* Coordinator */,
 				3363A37F2908A8130051B5E9 /* Assets.xcassets */,
@@ -248,6 +251,7 @@
 				3363A3802908A8130051B5E9 /* Assets.xcassets in Resources */,
 				3363A3972908C61B0051B5E9 /* GamesViewController.xib in Resources */,
 				33F8D08F2910707100718077 /* ScoreViewController.xib in Resources */,
+				3374C1FC29415D1D00AC3CDA /* Settings.bundle in Resources */,
 				33F8D08A291051BE00718077 /* GamesTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
