@@ -3,7 +3,8 @@ import MessageUI
 // swiftlint:disable line_length
 
 class AboutViewController: UIViewController {
-
+    let soundState = Configuration.shared
+    @IBOutlet weak var stateSound: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -14,12 +15,21 @@ class AboutViewController: UIViewController {
         present(viewController, animated: true, completion: nil)
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        stateSound.setOn(soundState.soundState, animated: false)
+    }
+
     func configureEmail() -> MFMailComposeViewController {
         let composer = MFMailComposeViewController()
         composer.setToRecipients(["rodrigoeduardosilv@gmail.com"])
         composer.setSubject("Feebdback Score Counter")
         composer.setMessageBody("Sua Mensagem", isHTML: false)
         return composer
+    }
+
+    @IBAction func changeSoundState(_ sender: UISwitch) {
+        soundState.soundState = sender.isOn
     }
 }
 

@@ -13,6 +13,8 @@ class ScoreViewController: UIViewController {
     var game: NewGame
     var segmenteControll = UISegmentedControl(items: ["1", "+5", "+10", "+100"])
     var scoreSound = AVAudioPlayer()
+    var soundState = Configuration.shared.soundState
+
     init(game: NewGame) {
         self.game = game
         super.init(nibName: nil, bundle: nil)
@@ -172,22 +174,26 @@ extension ScoreViewController: UITableViewDelegate {
 
 extension ScoreViewController: ScoreTableViewCellDelegate {
     func plusPoint(index: Int) {
-        self.playSound()
+
+        if soundState {
+            self.playSound()
+        }
+
         guard let game = fetchResultScore.fetchedObjects?[index] else { return }
         var plusSegment = 0
         let segmenteControllIndex = segmenteControll.selectedSegmentIndex
-        if segmenteControllIndex == 0 {
-            plusSegment = 1
-        }
-        if segmenteControllIndex == 1 {
-            plusSegment = 5
-        }
-        if segmenteControllIndex == 2 {
-            plusSegment = 10
-        }
-        if segmenteControllIndex == 3 {
-            plusSegment = 100
-        }
+            if segmenteControllIndex == 0 {
+                plusSegment = 1
+            }
+            if segmenteControllIndex == 1 {
+                plusSegment = 5
+            }
+            if segmenteControllIndex == 2 {
+                plusSegment = 10
+            }
+            if segmenteControllIndex == 3 {
+                plusSegment = 100
+            }
         let points = game.points
         game.setValue(Int(points) + plusSegment, forKey: "points")
 
@@ -199,22 +205,25 @@ extension ScoreViewController: ScoreTableViewCellDelegate {
 }
 
     func subtractPoint(index: Int) {
-        self.playSound()
+        if soundState {
+            self.playSound()
+        }
+
         guard let game = fetchResultScore.fetchedObjects?[index] else { return }
         var subtractSegment = 0
         let segmenteControllIndex = segmenteControll.selectedSegmentIndex
-        if segmenteControllIndex == 0 {
-            subtractSegment = 1
-        }
-        if segmenteControllIndex == 1 {
-            subtractSegment = 5
-        }
-        if segmenteControllIndex == 2 {
-            subtractSegment = 10
-        }
-        if segmenteControllIndex == 3 {
-            subtractSegment = 100
-        }
+            if segmenteControllIndex == 0 {
+                subtractSegment = 1
+            }
+            if segmenteControllIndex == 1 {
+                subtractSegment = 5
+            }
+            if segmenteControllIndex == 2 {
+                subtractSegment = 10
+            }
+            if segmenteControllIndex == 3 {
+                subtractSegment = 100
+            }
         let points = game.points
         game.setValue(Int(points) - subtractSegment, forKey: "points")
 
