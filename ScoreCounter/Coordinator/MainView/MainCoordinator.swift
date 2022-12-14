@@ -15,16 +15,13 @@ class MainCoordinator: Coordinator {
         mainViewController.delegate = self
         self.viewController = mainViewController
         navigationController.pushViewController(mainViewController, animated: true)
-
     }
-
 }
 
 extension MainCoordinator: MainViewControllerDelegate {
     func showGamesViewController(view: UIView) {
-//        let gamesCoordinator = GamesCoordinator(navigationController: navigationController, mainViewController: MainViewController())
-//        gamesCoordinator.start()
-//        childCoordinator = gamesCoordinator
+        let gamesCoordinator = GamesCoordinator(navigationController: navigationController)
+        gamesCoordinator.start()
+        childCoordinator = gamesCoordinator
     }
-
 }

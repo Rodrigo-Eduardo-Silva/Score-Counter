@@ -17,6 +17,5 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .green
         delegate?.showGamesViewController(view: view)
-
     }
 }

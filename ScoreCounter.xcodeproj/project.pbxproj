@@ -25,7 +25,6 @@
 		3363A39B2908CF050051B5E9 /* GamesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3363A39A2908CF050051B5E9 /* GamesCoordinator.swift */; };
 		3368D42C294007EA00DA1AC0 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3368D42B294007EA00DA1AC0 /* Configuration.swift */; };
 		3374C1FC29415D1D00AC3CDA /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3374C1FB29415D1D00AC3CDA /* Settings.bundle */; };
-		3380AEA1292C4B2500BC8549 /* ServiceEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380AEA0292C4B2500BC8549 /* ServiceEmail.swift */; };
 		33A1ABF22922C305004A4670 /* CoreDataShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A1ABF12922C305004A4670 /* CoreDataShared.swift */; };
 		33A77F512911DA15001BBAC6 /* ScoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A77F4F2911DA15001BBAC6 /* ScoreTableViewCell.swift */; };
 		33A77F522911DA15001BBAC6 /* ScoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A77F502911DA15001BBAC6 /* ScoreTableViewCell.xib */; };
@@ -59,7 +58,6 @@
 		3363A39A2908CF050051B5E9 /* GamesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesCoordinator.swift; sourceTree = "<group>"; };
 		3368D42B294007EA00DA1AC0 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		3374C1FB29415D1D00AC3CDA /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = ScoreCounter/Settings.bundle; sourceTree = SOURCE_ROOT; };
-		3380AEA0292C4B2500BC8549 /* ServiceEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceEmail.swift; sourceTree = "<group>"; };
 		33A1ABF12922C305004A4670 /* CoreDataShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataShared.swift; sourceTree = "<group>"; };
 		33A77F4F2911DA15001BBAC6 /* ScoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTableViewCell.swift; sourceTree = "<group>"; };
 		33A77F502911DA15001BBAC6 /* ScoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScoreTableViewCell.xib; sourceTree = "<group>"; };
@@ -88,9 +86,7 @@
 			children = (
 				333F21D22929ACC00075EA40 /* AboutViewController.swift */,
 				333F21D32929ACC00075EA40 /* AboutViewController.xib */,
-				3368D42B294007EA00DA1AC0 /* Configuration.swift */,
 				333F21D72929B2E70075EA40 /* AboutCoordinator.swift */,
-				3380AEA0292C4B2500BC8549 /* ServiceEmail.swift */,
 			);
 			path = AboutScene;
 			sourceTree = "<group>";
@@ -117,6 +113,7 @@
 				3363A3732908A8120051B5E9 /* AppDelegate.swift */,
 				3363A3752908A8120051B5E9 /* SceneDelegate.swift */,
 				33A1ABF12922C305004A4670 /* CoreDataShared.swift */,
+				3368D42B294007EA00DA1AC0 /* Configuration.swift */,
 				3374C1FB29415D1D00AC3CDA /* Settings.bundle */,
 				3363A3982908C6A90051B5E9 /* Scenes */,
 				3363A38D2908AA470051B5E9 /* Coordinator */,
@@ -302,7 +299,6 @@
 				33F8D091291071C300718077 /* ScoreModel.swift in Sources */,
 				3363A3762908A8120051B5E9 /* SceneDelegate.swift in Sources */,
 				3363A38B2908A9680051B5E9 /* MainViewController.swift in Sources */,
-				3380AEA1292C4B2500BC8549 /* ServiceEmail.swift in Sources */,
 				3363A3912908ACBD0051B5E9 /* AppCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
