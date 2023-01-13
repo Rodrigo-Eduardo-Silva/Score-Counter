@@ -11,8 +11,8 @@ class AboutViewController: UIViewController {
     }
 
     @IBAction func sendEmail(_ sender: Any) {
-        let viewController = configureEmail()
-        present(viewController, animated: true, completion: nil)
+        configureEmail()
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -20,12 +20,22 @@ class AboutViewController: UIViewController {
         stateSound.setOn(soundState.soundState, animated: false)
     }
 
-    func configureEmail() -> MFMailComposeViewController {
-        let composer = MFMailComposeViewController()
-        composer.setToRecipients(["rodrigoeduardosilv@gmail.com"])
-        composer.setSubject("Feebdback Score Counter")
-        composer.setMessageBody("Sua Mensagem", isHTML: false)
-        return composer
+    func configureEmail() {
+        if MFMailComposeViewController.canSendMail() {
+            let composer = MFMailComposeViewController()
+            composer.mailComposeDelegate = self
+            composer.setToRecipients(["rodrigoeduardosilv@gmail.com"])
+            composer.setSubject("Feebdback Score Counter")
+            composer.setMessageBody("Sua Mensagem", isHTML: false)
+           present(composer, animated: true)
+
+        } else {
+            let alert = UIAlertController(title: "Score Counter", message: "O email do seu device não está configurado", preferredStyle: .actionSheet)
+            let cancelAction = UIAlertAction(title: "Ok", style: .cancel)
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+        }
+
     }
 
     @IBAction func changeSoundState(_ sender: UISwitch) {
@@ -35,17 +45,25 @@ class AboutViewController: UIViewController {
 
 extension AboutViewController: MFMailComposeViewControllerDelegate {
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        if error != nil {
+            controller.dismiss(animated: true)
+            return
+        }
         switch result {
         case .cancelled:
-            navigationController?.popViewController(animated: true)
+            controller.dismiss(animated: true, completion: nil)
+            print("email cancelado")
         case .saved:
-            navigationController?.popViewController(animated: true)
+            controller.dismiss(animated: true)
         case .sent:
             print("email enviado")
+            controller.dismiss(animated: true)
         case .failed:
             print("falha ao enviar email")
+            controller.dismiss(animated: true)
         @unknown default:
             break
         }
+        controller.dismiss(animated: true)
     }
 }
