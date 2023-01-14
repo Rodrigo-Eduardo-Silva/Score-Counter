@@ -4,6 +4,7 @@ import MessageUI
 
 class AboutViewController: UIViewController {
     let soundState = Configuration.shared
+    let descriptionAbout = AboutViewDescription.descriptionAbout
     @IBOutlet weak var stateSound: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,9 +16,20 @@ class AboutViewController: UIViewController {
 
     }
 
+    @IBAction func showAboutAlert(_ sender: Any) {
+        showAltert()
+
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         stateSound.setOn(soundState.soundState, animated: false)
+    }
+
+    func showAltert() {
+        let  alert = UIAlertController(title: "Score Counter", message: descriptionAbout, preferredStyle: .actionSheet)
+        let alterAction = UIAlertAction(title: "Ok", style: .cancel)
+        alert.addAction(alterAction)
+        self.present(alert, animated: true, completion: nil)
     }
 
     func configureEmail() {

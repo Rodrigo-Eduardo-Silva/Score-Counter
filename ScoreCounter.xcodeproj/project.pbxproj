@@ -29,6 +29,7 @@
 		33A77F512911DA15001BBAC6 /* ScoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A77F4F2911DA15001BBAC6 /* ScoreTableViewCell.swift */; };
 		33A77F522911DA15001BBAC6 /* ScoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A77F502911DA15001BBAC6 /* ScoreTableViewCell.xib */; };
 		33A77F542911ECF6001BBAC6 /* ScoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A77F532911ECF6001BBAC6 /* ScoreCoordinator.swift */; };
+		33C1AD63297231E0004185F8 /* AboutViewDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C1AD62297231E0004185F8 /* AboutViewDescription.swift */; };
 		33D97849290B4BE800400F5D /* GamesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D97848290B4BE800400F5D /* GamesViewModel.swift */; };
 		33F8D089291051BE00718077 /* GamesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F8D087291051BE00718077 /* GamesTableViewCell.swift */; };
 		33F8D08A291051BE00718077 /* GamesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33F8D088291051BE00718077 /* GamesTableViewCell.xib */; };
@@ -62,6 +63,7 @@
 		33A77F4F2911DA15001BBAC6 /* ScoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTableViewCell.swift; sourceTree = "<group>"; };
 		33A77F502911DA15001BBAC6 /* ScoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScoreTableViewCell.xib; sourceTree = "<group>"; };
 		33A77F532911ECF6001BBAC6 /* ScoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCoordinator.swift; sourceTree = "<group>"; };
+		33C1AD62297231E0004185F8 /* AboutViewDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewDescription.swift; sourceTree = "<group>"; };
 		33D97848290B4BE800400F5D /* GamesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesViewModel.swift; sourceTree = "<group>"; };
 		33F8D087291051BE00718077 /* GamesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesTableViewCell.swift; sourceTree = "<group>"; };
 		33F8D088291051BE00718077 /* GamesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GamesTableViewCell.xib; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				333F21D22929ACC00075EA40 /* AboutViewController.swift */,
+				33C1AD62297231E0004185F8 /* AboutViewDescription.swift */,
 				333F21D32929ACC00075EA40 /* AboutViewController.xib */,
 				333F21D72929B2E70075EA40 /* AboutCoordinator.swift */,
 			);
@@ -300,6 +303,7 @@
 				3363A3762908A8120051B5E9 /* SceneDelegate.swift in Sources */,
 				3363A38B2908A9680051B5E9 /* MainViewController.swift in Sources */,
 				3363A3912908ACBD0051B5E9 /* AppCoordinator.swift in Sources */,
+				33C1AD63297231E0004185F8 /* AboutViewDescription.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
