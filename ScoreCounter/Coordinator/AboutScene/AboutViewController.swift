@@ -27,7 +27,7 @@ class AboutViewController: UIViewController {
 
     func showAltert() {
         let  alert = UIAlertController(title: "Score Counter", message: descriptionAbout, preferredStyle: .actionSheet)
-        let alterAction = UIAlertAction(title: "Ok", style: .cancel)
+        let alterAction = UIAlertAction(title: "Ok", style: .default)
         alert.addAction(alterAction)
         self.present(alert, animated: true, completion: nil)
     }

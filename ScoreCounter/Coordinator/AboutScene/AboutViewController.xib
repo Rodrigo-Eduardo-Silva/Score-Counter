@@ -20,22 +20,15 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2z8-9L-eSn">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uOW-iU-xqt">
                             <rect key="frame" x="16" y="120" width="382" height="128"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sobre o Aplicativo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zuJ-39-eel">
-                                    <rect key="frame" x="108.66666666666669" y="51.33333333333335" width="165" height="25.333333333333336"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UZJ-u0-7ne">
-                                    <rect key="frame" x="149" y="80" width="85" height="40"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UZJ-u0-7ne">
+                                    <rect key="frame" x="97" y="44" width="189" height="40"/>
                                     <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="Button">
+                                    <buttonConfiguration key="configuration" style="plain" title="Sobre o Aplicativo">
                                         <fontDescription key="titleFontDescription" type="system" pointSize="21"/>
                                         <color key="baseForegroundColor" systemColor="labelColor"/>
                                     </buttonConfiguration>
@@ -47,8 +40,10 @@
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="128" id="7aC-Xi-tDm"/>
-                                <constraint firstItem="zuJ-39-eel" firstAttribute="centerX" secondItem="uOW-iU-xqt" secondAttribute="centerX" id="TZr-Ma-qRM"/>
-                                <constraint firstItem="zuJ-39-eel" firstAttribute="centerY" secondItem="uOW-iU-xqt" secondAttribute="centerY" id="a18-CF-7TU"/>
+                                <constraint firstAttribute="bottom" secondItem="UZJ-u0-7ne" secondAttribute="bottom" constant="44" id="BtP-tZ-nD9"/>
+                                <constraint firstItem="UZJ-u0-7ne" firstAttribute="top" secondItem="uOW-iU-xqt" secondAttribute="top" constant="44" id="HJo-NI-Jw7"/>
+                                <constraint firstAttribute="trailing" secondItem="UZJ-u0-7ne" secondAttribute="trailing" constant="96" id="P32-sN-7Us"/>
+                                <constraint firstItem="UZJ-u0-7ne" firstAttribute="leading" secondItem="uOW-iU-xqt" secondAttribute="leading" constant="97" id="nwS-ss-RmY"/>
                                 <constraint firstAttribute="width" constant="382" id="wm7-3v-Wz6"/>
                             </constraints>
                         </view>
@@ -79,7 +74,7 @@
                             <rect key="frame" x="16" y="293" width="380" height="128"/>
                             <subviews>
                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7LD-qa-xDa">
-                                    <rect key="frame" x="165.66666666666666" y="79" width="51" height="31"/>
+                                    <rect key="frame" x="165.5" y="79" width="51" height="31"/>
                                     <color key="onTintColor" red="0.2097151361" green="0.69802295920000001" blue="0.99367559520000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <connections>
                                         <action selector="changeSoundState:" destination="-1" eventType="valueChanged" id="KhZ-X4-Ba8"/>
