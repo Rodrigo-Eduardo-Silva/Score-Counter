@@ -8,13 +8,7 @@ protocol GamesViewControllerDelegate: AnyObject {
 }
 
 class GamesViewController: UIViewController {
-    private let banner: GADBannerView =  {
-       let banner = GADBannerView()
-        banner.adUnitID = "ca-app-pub-2591443221502536/7083232760"
-        banner.load(GADRequest())
-        banner.backgroundColor = .secondarySystemBackground
-        return banner
-    }()
+    let googleAdMob = GoogleAdMob()
     weak var delegate: GamesViewControllerDelegate?
     @IBOutlet weak var tableView: UITableView!
     var model: GamesViewModel?
@@ -29,13 +23,15 @@ class GamesViewController: UIViewController {
         createBarButtonItem()
         registerCell()
         model?.loadGames(context: context)
+        let banner = googleAdMob.banner
         banner.rootViewController = self
         view.addSubview(banner)
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        banner.frame = CGRect(x: 0, y: view.frame.size.height-50, width: view.frame.size.width, height: 50)
+        let banner = googleAdMob.banner
+        banner.frame = googleAdMob.bannerPosition(mainView: view)
     }
 
     func createBarButtonItem() {

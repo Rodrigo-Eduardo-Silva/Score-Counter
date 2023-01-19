@@ -25,6 +25,7 @@
 		3363A3972908C61B0051B5E9 /* GamesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3363A3952908C61B0051B5E9 /* GamesViewController.xib */; };
 		3363A39B2908CF050051B5E9 /* GamesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3363A39A2908CF050051B5E9 /* GamesCoordinator.swift */; };
 		3368D42C294007EA00DA1AC0 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3368D42B294007EA00DA1AC0 /* Configuration.swift */; };
+		336E6AC42978D5D0008359B5 /* GoogleAdMob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E6AC32978D5CF008359B5 /* GoogleAdMob.swift */; };
 		3374C1FC29415D1D00AC3CDA /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3374C1FB29415D1D00AC3CDA /* Settings.bundle */; };
 		33A1ABF22922C305004A4670 /* CoreDataShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A1ABF12922C305004A4670 /* CoreDataShared.swift */; };
 		33A77F512911DA15001BBAC6 /* ScoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A77F4F2911DA15001BBAC6 /* ScoreTableViewCell.swift */; };
@@ -59,6 +60,7 @@
 		3363A3952908C61B0051B5E9 /* GamesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GamesViewController.xib; sourceTree = "<group>"; };
 		3363A39A2908CF050051B5E9 /* GamesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesCoordinator.swift; sourceTree = "<group>"; };
 		3368D42B294007EA00DA1AC0 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		336E6AC32978D5CF008359B5 /* GoogleAdMob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAdMob.swift; sourceTree = "<group>"; };
 		3374C1FB29415D1D00AC3CDA /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = ScoreCounter/Settings.bundle; sourceTree = SOURCE_ROOT; };
 		33A1ABF12922C305004A4670 /* CoreDataShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataShared.swift; sourceTree = "<group>"; };
 		33A77F4F2911DA15001BBAC6 /* ScoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTableViewCell.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				3363A3752908A8120051B5E9 /* SceneDelegate.swift */,
 				33A1ABF12922C305004A4670 /* CoreDataShared.swift */,
 				3368D42B294007EA00DA1AC0 /* Configuration.swift */,
+				336E6AC32978D5CF008359B5 /* GoogleAdMob.swift */,
 				3374C1FB29415D1D00AC3CDA /* Settings.bundle */,
 				3363A3982908C6A90051B5E9 /* Scenes */,
 				3363A38D2908AA470051B5E9 /* Coordinator */,
@@ -307,6 +310,7 @@
 				3363A39B2908CF050051B5E9 /* GamesCoordinator.swift in Sources */,
 				333F21D82929B2E70075EA40 /* AboutCoordinator.swift in Sources */,
 				33A77F512911DA15001BBAC6 /* ScoreTableViewCell.swift in Sources */,
+				336E6AC42978D5D0008359B5 /* GoogleAdMob.swift in Sources */,
 				33F8D091291071C300718077 /* ScoreModel.swift in Sources */,
 				3363A3762908A8120051B5E9 /* SceneDelegate.swift in Sources */,
 				3363A38B2908A9680051B5E9 /* MainViewController.swift in Sources */,

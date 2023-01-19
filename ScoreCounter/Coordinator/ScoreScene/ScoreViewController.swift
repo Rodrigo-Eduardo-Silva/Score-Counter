@@ -4,6 +4,7 @@ import AVFoundation
 // swiftlint:disable line_length
 
 class ScoreViewController: UIViewController {
+    let googleAdMob = GoogleAdMob()
 
     @IBOutlet weak var tableView: UITableView!
     var model: ScoreModel?
@@ -38,6 +39,16 @@ class ScoreViewController: UIViewController {
         model?.loadScore(with: context, gameName: game)
         configureSegmenteControll()
         navigationItem.title = game.name
+        let banner = googleAdMob.banner
+        banner.rootViewController = self
+        view.addSubview(banner)
+
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let banner = googleAdMob.banner
+        banner.frame = googleAdMob.bannerPosition(mainView: view)
     }
 
     func configureSegmenteControll() {
