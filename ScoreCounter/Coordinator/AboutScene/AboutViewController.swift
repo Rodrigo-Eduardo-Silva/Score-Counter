@@ -4,7 +4,7 @@ import MessageUI
 
 class AboutViewController: UIViewController {
     let soundState = Configuration.shared
-    let descriptionAbout = AboutViewDescription.descriptionAbout
+    let descriptionAbout = AboutViewDescription.descriptionAbout + AboutViewDescription.descriptionAboutEnglish
     @IBOutlet weak var stateSound: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +20,7 @@ class AboutViewController: UIViewController {
         showAltert()
 
     }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         stateSound.setOn(soundState.soundState, animated: false)

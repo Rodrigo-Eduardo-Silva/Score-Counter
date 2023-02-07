@@ -28,7 +28,7 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UZJ-u0-7ne">
                                     <rect key="frame" x="97" y="44" width="189" height="40"/>
                                     <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="Sobre o Aplicativo">
+                                    <buttonConfiguration key="configuration" style="plain" title="About the App">
                                         <fontDescription key="titleFontDescription" type="system" pointSize="21"/>
                                         <color key="baseForegroundColor" systemColor="labelColor"/>
                                     </buttonConfiguration>
@@ -51,9 +51,9 @@
                             <rect key="frame" x="16" y="466" width="382" height="128"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkD-bP-SpC">
-                                    <rect key="frame" x="99" y="44" width="184" height="40"/>
+                                    <rect key="frame" x="129.5" y="44" width="123.5" height="40"/>
                                     <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="Entre em Contato">
+                                    <buttonConfiguration key="configuration" style="plain" title="Contact us">
                                         <fontDescription key="titleFontDescription" type="system" pointSize="21"/>
                                         <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </buttonConfiguration>
@@ -80,7 +80,7 @@
                                         <action selector="changeSoundState:" destination="-1" eventType="valueChanged" id="KhZ-X4-Ba8"/>
                                     </connections>
                                 </switch>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ligar/Desligar Som" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQ3-Lb-FlY">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turn on/off Sounds" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQ3-Lb-FlY">
                                     <rect key="frame" x="40" y="35" width="300" height="24"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <nil key="textColor"/>

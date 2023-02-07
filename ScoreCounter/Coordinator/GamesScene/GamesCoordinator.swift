@@ -23,6 +23,7 @@ class GamesCoordinator: Coordinator {
     }
 
 }
+
 extension GamesCoordinator: GamesViewControllerDelegate {
     func showMenuViewController() {
         let menuCoordinator = AboutCoordinator(navigationController: navigationController)
