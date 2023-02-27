@@ -12,7 +12,7 @@ class ScoreViewController: UIViewController {
         model?.fetchResultScore
     }
     var game: NewGame
-    var segmenteControll = UISegmentedControl(items: ["1", "+5", "+10", "+100"])
+    var segmentedControl = UISegmentedControl(items: ["+1", "+5", "+10", "+100"])
     var scoreSound = AVAudioPlayer()
     var soundState = Configuration.shared.soundState
 
@@ -52,10 +52,17 @@ class ScoreViewController: UIViewController {
     }
 
     func configureSegmenteControll() {
-        segmenteControll.selectedSegmentIndex = 0
-        segmenteControll.tintColor = .blue
-        segmenteControll.backgroundColor = .blue
-     }
+        let font = UIFont.systemFont(ofSize: 25)
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.tintColor = .blue
+        segmentedControl.backgroundColor = .blue
+        segmentedControl.selectedSegmentTintColor = .systemBlue
+        segmentedControl.frame.size.height = 44
+        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .normal)
+        segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+    }
 
     func playSound() {
         guard let path = Bundle.main.path(forResource: "score", ofType: "mp3") else { return }
@@ -84,7 +91,7 @@ class ScoreViewController: UIViewController {
 
     @objc func showIncrement() {
         if tableView.tableHeaderView == nil {
-            tableView.tableHeaderView = segmenteControll
+            tableView.tableHeaderView = segmentedControl
         } else {
             tableView.tableHeaderView = nil
         }
@@ -192,7 +199,7 @@ extension ScoreViewController: ScoreTableViewCellDelegate {
 
         guard let game = fetchResultScore.fetchedObjects?[index] else { return }
         var plusSegment = 0
-        let segmenteControllIndex = segmenteControll.selectedSegmentIndex
+        let segmenteControllIndex = segmentedControl.selectedSegmentIndex
             if segmenteControllIndex == 0 {
                 plusSegment = 1
             }
@@ -222,7 +229,7 @@ extension ScoreViewController: ScoreTableViewCellDelegate {
 
         guard let game = fetchResultScore.fetchedObjects?[index] else { return }
         var subtractSegment = 0
-        let segmenteControllIndex = segmenteControll.selectedSegmentIndex
+        let segmenteControllIndex = segmentedControl.selectedSegmentIndex
             if segmenteControllIndex == 0 {
                 subtractSegment = 1
             }
