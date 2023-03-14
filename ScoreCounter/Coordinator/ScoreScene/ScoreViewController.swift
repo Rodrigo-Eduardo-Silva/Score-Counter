@@ -37,7 +37,7 @@ class ScoreViewController: UIViewController {
         createBarButtonItem()
         registerCell()
         model?.loadScore(with: context, gameName: game)
-        configureSegmenteControll()
+        configureSegmentedControll()
         navigationItem.title = game.name
         let banner = googleAdMob.banner
         banner.rootViewController = self
@@ -51,7 +51,7 @@ class ScoreViewController: UIViewController {
         banner.frame = googleAdMob.bannerPosition(mainView: view)
     }
 
-    func configureSegmenteControll() {
+    func configureSegmentedControll() {
         let font = UIFont.systemFont(ofSize: 25)
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.tintColor = .blue
@@ -67,11 +67,13 @@ class ScoreViewController: UIViewController {
     func playSound() {
         guard let path = Bundle.main.path(forResource: "score", ofType: "mp3") else { return }
         let url = URL(fileURLWithPath: path)
+
         do {
         scoreSound = try AVAudioPlayer(contentsOf: url)
         } catch {
             print(error.localizedDescription)
         }
+
         scoreSound.prepareToPlay()
         scoreSound.play()
     }

@@ -8,17 +8,15 @@ class AboutViewController: UIViewController {
     @IBOutlet weak var stateSound: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationController?.navigationBar.backgroundColor = .white
     }
 
-    @IBAction func sendEmail(_ sender: Any) {
+     @IBAction func sendEmail(_ sender: Any) {
         configureEmail()
-
     }
 
     @IBAction func showAboutAlert(_ sender: Any) {
         showAltert()
-
     }
 
     override func viewWillAppear(_ animated: Bool) {

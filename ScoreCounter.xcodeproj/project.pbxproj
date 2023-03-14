@@ -459,6 +459,7 @@
 				DEVELOPMENT_TEAM = L83QN8FS8U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ScoreCounter/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -488,6 +489,7 @@
 				DEVELOPMENT_TEAM = L83QN8FS8U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ScoreCounter/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

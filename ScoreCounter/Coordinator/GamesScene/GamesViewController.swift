@@ -23,15 +23,20 @@ class GamesViewController: UIViewController {
         createBarButtonItem()
         registerCell()
         model?.loadGames(context: context)
-        let banner = googleAdMob.banner
-        banner.rootViewController = self
-        view.addSubview(banner)
-    }
+        bannerConfiguration()
+        navigationItem.title = "Score Counter"
+     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         let banner = googleAdMob.banner
         banner.frame = googleAdMob.bannerPosition(mainView: view)
+    }
+
+    func bannerConfiguration() {
+        let banner = googleAdMob.banner
+        banner.rootViewController = self
+        view.addSubview(banner)
     }
 
     func createBarButtonItem() {
