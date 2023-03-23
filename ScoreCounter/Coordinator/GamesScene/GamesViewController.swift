@@ -1,6 +1,5 @@
 import UIKit
 import CoreData
-import GoogleMobileAds
 // swiftlint:disable line_length
 protocol GamesViewControllerDelegate: AnyObject {
     func showScoreViewController(with game: NewGame)
@@ -8,7 +7,6 @@ protocol GamesViewControllerDelegate: AnyObject {
 }
 
 class GamesViewController: UIViewController {
-    let googleAdMob = GoogleAdMob()
     weak var delegate: GamesViewControllerDelegate?
     @IBOutlet weak var tableView: UITableView!
     var model: GamesViewModel?
@@ -23,21 +21,9 @@ class GamesViewController: UIViewController {
         createBarButtonItem()
         registerCell()
         model?.loadGames(context: context)
-        bannerConfiguration()
         navigationItem.title = "Score Counter"
      }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        let banner = googleAdMob.banner
-        banner.frame = googleAdMob.bannerPosition(mainView: view)
-    }
-
-    func bannerConfiguration() {
-        let banner = googleAdMob.banner
-        banner.rootViewController = self
-        view.addSubview(banner)
-    }
 
     func createBarButtonItem() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Game",

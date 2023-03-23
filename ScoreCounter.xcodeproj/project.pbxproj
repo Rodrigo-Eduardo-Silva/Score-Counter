@@ -10,22 +10,18 @@
 		333F21D42929ACC00075EA40 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333F21D22929ACC00075EA40 /* AboutViewController.swift */; };
 		333F21D52929ACC00075EA40 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 333F21D32929ACC00075EA40 /* AboutViewController.xib */; };
 		333F21D82929B2E70075EA40 /* AboutCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333F21D72929B2E70075EA40 /* AboutCoordinator.swift */; };
-		334A4FE729761D9C00F5B907 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 334A4FE629761D9C00F5B907 /* GoogleMobileAds */; };
 		3350FA43292EEAD4006E75FD /* score.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3350FA42292EEAD4006E75FD /* score.mp3 */; };
 		3363A3742908A8120051B5E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3363A3732908A8120051B5E9 /* AppDelegate.swift */; };
 		3363A3762908A8120051B5E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3363A3752908A8120051B5E9 /* SceneDelegate.swift */; };
 		3363A37E2908A8120051B5E9 /* ScoreCounter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3363A37C2908A8120051B5E9 /* ScoreCounter.xcdatamodeld */; };
 		3363A3802908A8130051B5E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3363A37F2908A8130051B5E9 /* Assets.xcassets */; };
 		3363A3832908A8130051B5E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3363A3812908A8130051B5E9 /* LaunchScreen.storyboard */; };
-		3363A38B2908A9680051B5E9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3363A38A2908A9680051B5E9 /* MainViewController.swift */; };
 		3363A38F2908AA780051B5E9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3363A38E2908AA780051B5E9 /* Coordinator.swift */; };
 		3363A3912908ACBD0051B5E9 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3363A3902908ACBD0051B5E9 /* AppCoordinator.swift */; };
-		3363A3932908ADBE0051B5E9 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3363A3922908ADBE0051B5E9 /* MainCoordinator.swift */; };
 		3363A3962908C61B0051B5E9 /* GamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3363A3942908C61B0051B5E9 /* GamesViewController.swift */; };
 		3363A3972908C61B0051B5E9 /* GamesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3363A3952908C61B0051B5E9 /* GamesViewController.xib */; };
 		3363A39B2908CF050051B5E9 /* GamesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3363A39A2908CF050051B5E9 /* GamesCoordinator.swift */; };
 		3368D42C294007EA00DA1AC0 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3368D42B294007EA00DA1AC0 /* Configuration.swift */; };
-		336E6AC42978D5D0008359B5 /* GoogleAdMob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E6AC32978D5CF008359B5 /* GoogleAdMob.swift */; };
 		3374C1FC29415D1D00AC3CDA /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3374C1FB29415D1D00AC3CDA /* Settings.bundle */; };
 		33A1ABF22922C305004A4670 /* CoreDataShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A1ABF12922C305004A4670 /* CoreDataShared.swift */; };
 		33A77F512911DA15001BBAC6 /* ScoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A77F4F2911DA15001BBAC6 /* ScoreTableViewCell.swift */; };
@@ -52,15 +48,12 @@
 		3363A37F2908A8130051B5E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3363A3822908A8130051B5E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3363A3842908A8130051B5E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3363A38A2908A9680051B5E9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3363A38E2908AA780051B5E9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3363A3902908ACBD0051B5E9 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		3363A3922908ADBE0051B5E9 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		3363A3942908C61B0051B5E9 /* GamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesViewController.swift; sourceTree = "<group>"; };
 		3363A3952908C61B0051B5E9 /* GamesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GamesViewController.xib; sourceTree = "<group>"; };
 		3363A39A2908CF050051B5E9 /* GamesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesCoordinator.swift; sourceTree = "<group>"; };
 		3368D42B294007EA00DA1AC0 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
-		336E6AC32978D5CF008359B5 /* GoogleAdMob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAdMob.swift; sourceTree = "<group>"; };
 		3374C1FB29415D1D00AC3CDA /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = ScoreCounter/Settings.bundle; sourceTree = SOURCE_ROOT; };
 		33A1ABF12922C305004A4670 /* CoreDataShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataShared.swift; sourceTree = "<group>"; };
 		33A77F4F2911DA15001BBAC6 /* ScoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTableViewCell.swift; sourceTree = "<group>"; };
@@ -80,7 +73,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				334A4FE729761D9C00F5B907 /* GoogleMobileAds in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,7 +113,6 @@
 				3363A3752908A8120051B5E9 /* SceneDelegate.swift */,
 				33A1ABF12922C305004A4670 /* CoreDataShared.swift */,
 				3368D42B294007EA00DA1AC0 /* Configuration.swift */,
-				336E6AC32978D5CF008359B5 /* GoogleAdMob.swift */,
 				3374C1FB29415D1D00AC3CDA /* Settings.bundle */,
 				3363A3982908C6A90051B5E9 /* Scenes */,
 				3363A38D2908AA470051B5E9 /* Coordinator */,
@@ -132,15 +123,6 @@
 				3363A37C2908A8120051B5E9 /* ScoreCounter.xcdatamodeld */,
 			);
 			path = ScoreCounter;
-			sourceTree = "<group>";
-		};
-		3363A38C2908AA2F0051B5E9 /* MainView */ = {
-			isa = PBXGroup;
-			children = (
-				3363A38A2908A9680051B5E9 /* MainViewController.swift */,
-				3363A3922908ADBE0051B5E9 /* MainCoordinator.swift */,
-			);
-			path = MainView;
 			sourceTree = "<group>";
 		};
 		3363A38D2908AA470051B5E9 /* Coordinator */ = {
@@ -157,7 +139,6 @@
 			children = (
 				333F21D62929AE130075EA40 /* AboutScene */,
 				33F8D08B2910702A00718077 /* ScoreScene */,
-				3363A38C2908AA2F0051B5E9 /* MainView */,
 				3363A3992908C6BF0051B5E9 /* GamesScene */,
 			);
 			name = Scenes;
@@ -208,7 +189,6 @@
 			);
 			name = ScoreCounter;
 			packageProductDependencies = (
-				334A4FE629761D9C00F5B907 /* GoogleMobileAds */,
 			);
 			productName = ScoreCounter;
 			productReference = 3363A3702908A8120051B5E9 /* ScoreCounter.app */;
@@ -239,7 +219,6 @@
 			);
 			mainGroup = 3363A3672908A8120051B5E9;
 			packageReferences = (
-				334A4FE529761D9C00F5B907 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			productRefGroup = 3363A3712908A8120051B5E9 /* Products */;
 			projectDirPath = "";
@@ -296,7 +275,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				33A77F542911ECF6001BBAC6 /* ScoreCoordinator.swift in Sources */,
-				3363A3932908ADBE0051B5E9 /* MainCoordinator.swift in Sources */,
 				3363A37E2908A8120051B5E9 /* ScoreCounter.xcdatamodeld in Sources */,
 				3368D42C294007EA00DA1AC0 /* Configuration.swift in Sources */,
 				3363A38F2908AA780051B5E9 /* Coordinator.swift in Sources */,
@@ -310,10 +288,8 @@
 				3363A39B2908CF050051B5E9 /* GamesCoordinator.swift in Sources */,
 				333F21D82929B2E70075EA40 /* AboutCoordinator.swift in Sources */,
 				33A77F512911DA15001BBAC6 /* ScoreTableViewCell.swift in Sources */,
-				336E6AC42978D5D0008359B5 /* GoogleAdMob.swift in Sources */,
 				33F8D091291071C300718077 /* ScoreModel.swift in Sources */,
 				3363A3762908A8120051B5E9 /* SceneDelegate.swift in Sources */,
-				3363A38B2908A9680051B5E9 /* MainViewController.swift in Sources */,
 				3363A3912908ACBD0051B5E9 /* AppCoordinator.swift in Sources */,
 				33C1AD63297231E0004185F8 /* AboutViewDescription.swift in Sources */,
 			);
@@ -469,7 +445,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.silva.ScoreCounter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -499,7 +475,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.silva.ScoreCounter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -530,25 +506,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		334A4FE529761D9C00F5B907 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		334A4FE629761D9C00F5B907 /* GoogleMobileAds */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 334A4FE529761D9C00F5B907 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
-			productName = GoogleMobileAds;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		3363A37C2908A8120051B5E9 /* ScoreCounter.xcdatamodeld */ = {

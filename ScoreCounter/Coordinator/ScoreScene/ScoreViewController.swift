@@ -4,10 +4,10 @@ import AVFoundation
 // swiftlint:disable line_length
 
 class ScoreViewController: UIViewController {
-    let googleAdMob = GoogleAdMob()
 
     @IBOutlet weak var tableView: UITableView!
     var model: ScoreModel?
+    let synthesizer = AVSpeechSynthesizer()
     var fetchResultScore: NSFetchedResultsController<Score>! {
         model?.fetchResultScore
     }
@@ -20,10 +20,6 @@ class ScoreViewController: UIViewController {
         self.game = game
         super.init(nibName: nil, bundle: nil)
      }
-
-    deinit {
-        print("ScoreView Destruída")
-    }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -39,16 +35,7 @@ class ScoreViewController: UIViewController {
         model?.loadScore(with: context, gameName: game)
         configureSegmentedControll()
         navigationItem.title = game.name
-        let banner = googleAdMob.banner
-        banner.rootViewController = self
-        view.addSubview(banner)
 
-    }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        let banner = googleAdMob.banner
-        banner.frame = googleAdMob.bannerPosition(mainView: view)
     }
 
     func configureSegmentedControll() {
@@ -76,6 +63,14 @@ class ScoreViewController: UIViewController {
 
         scoreSound.prepareToPlay()
         scoreSound.play()
+    }
+
+    func speechScore(with score: Int64) {
+        let speechScore = String(score)
+        let utterance = AVSpeechUtterance(string: speechScore)
+        utterance.voice = AVSpeechSynthesisVoice(language: "pt-BR")
+        utterance.rate = 0.45
+        synthesizer.speak(utterance)
     }
 
     func createBarButtonItem() {
@@ -107,6 +102,7 @@ class ScoreViewController: UIViewController {
         altert.addTextField { textField in
             textField.placeholder = " Nome do Jogador"
         }
+
         let addPlayer = UIAlertAction(title: title, style: .default, handler: {  [weak self] _ in
             guard let self = self else { return }
 
@@ -216,7 +212,7 @@ extension ScoreViewController: ScoreTableViewCellDelegate {
             }
         let points = game.points
         game.setValue(Int(points) + plusSegment, forKey: "points")
-
+        speechScore(with: game.points)
         do {
             try context.save()
         } catch {
@@ -246,7 +242,7 @@ extension ScoreViewController: ScoreTableViewCellDelegate {
             }
         let points = game.points
         game.setValue(Int(points) - subtractSegment, forKey: "points")
-
+        speechScore(with: game.points)
         do {
             try context.save()
         } catch {

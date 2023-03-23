@@ -11,7 +11,17 @@ class Configuration {
             defauls.set(newValue, forKey: "soundState")
         }
     }
+    
+    var speechSound: Bool {
+        get {
+            return defauls.bool(forKey: "speechSound")
+        }
+        set {
+            defauls.set(newValue, forKey: "speechSound")
+        }
+    }
+    
     private init() {
-
+        
     }
 }
