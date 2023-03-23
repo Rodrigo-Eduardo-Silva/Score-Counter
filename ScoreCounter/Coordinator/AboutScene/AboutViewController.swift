@@ -5,7 +5,8 @@ import MessageUI
 class AboutViewController: UIViewController {
     let soundState = Configuration.shared
     let descriptionAbout = AboutViewDescription.descriptionAbout + AboutViewDescription.descriptionAboutEnglish
-    @IBOutlet weak var stateSound: UISwitch!
+
+    @IBOutlet weak var stateSound: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.backgroundColor = .white
@@ -21,7 +22,8 @@ class AboutViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        stateSound.setOn(soundState.soundState, animated: false)
+        stateSound.selectedSegmentIndex = soundState.soundState
+//        stateSound.setOn(soundState.soundState, animated: false)
     }
 
     func showAltert() {
@@ -49,9 +51,10 @@ class AboutViewController: UIViewController {
 
     }
 
-    @IBAction func changeSoundState(_ sender: UISwitch) {
-        soundState.soundState = sender.isOn
+    @IBAction func changeStateSound(_ sender: Any) {
+        soundState.soundState = stateSound.selectedSegmentIndex
     }
+
 }
 
 extension AboutViewController: MFMailComposeViewControllerDelegate {

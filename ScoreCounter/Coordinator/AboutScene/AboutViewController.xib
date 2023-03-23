@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutViewController" customModule="ScoreCounter" customModuleProvider="target">
             <connections>
-                <outlet property="stateSound" destination="7LD-qa-xDa" id="Rd3-We-G16"/>
+                <outlet property="stateSound" destination="Xea-gn-XZZ" id="swo-p6-h8s"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -73,29 +73,35 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="817-w9-3Sf">
                             <rect key="frame" x="16" y="293" width="380" height="128"/>
                             <subviews>
-                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7LD-qa-xDa">
-                                    <rect key="frame" x="165.5" y="79" width="51" height="31"/>
-                                    <color key="onTintColor" red="0.2097151361" green="0.69802295920000001" blue="0.99367559520000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <connections>
-                                        <action selector="changeSoundState:" destination="-1" eventType="valueChanged" id="KhZ-X4-Ba8"/>
-                                    </connections>
-                                </switch>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turn on/off Sounds" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQ3-Lb-FlY">
                                     <rect key="frame" x="40" y="35" width="300" height="24"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Xea-gn-XZZ">
+                                    <rect key="frame" x="19" y="74" width="342" height="32"/>
+                                    <color key="backgroundColor" red="0.20999999999999999" green="0.69802295920000001" blue="0.99367559520000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <segments>
+                                        <segment title="Off"/>
+                                        <segment title="Alert Point"/>
+                                        <segment title="Speech Point"/>
+                                    </segments>
+                                    <connections>
+                                        <action selector="changeStateSound:" destination="-1" eventType="valueChanged" id="m4Q-Y7-8L5"/>
+                                    </connections>
+                                </segmentedControl>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="380" id="4s2-xt-cts"/>
-                                <constraint firstItem="7LD-qa-xDa" firstAttribute="top" secondItem="WQ3-Lb-FlY" secondAttribute="bottom" constant="20" id="GJ1-12-mGN"/>
-                                <constraint firstItem="7LD-qa-xDa" firstAttribute="centerX" secondItem="WQ3-Lb-FlY" secondAttribute="centerX" id="H5V-DX-giE"/>
+                                <constraint firstAttribute="trailing" secondItem="Xea-gn-XZZ" secondAttribute="trailing" constant="19" id="RqA-Cv-t6p"/>
                                 <constraint firstItem="WQ3-Lb-FlY" firstAttribute="top" secondItem="817-w9-3Sf" secondAttribute="top" constant="35" id="T1D-zG-Jbv"/>
+                                <constraint firstItem="Xea-gn-XZZ" firstAttribute="leading" secondItem="817-w9-3Sf" secondAttribute="leading" constant="19" id="o06-ht-2vY"/>
                                 <constraint firstAttribute="trailing" secondItem="WQ3-Lb-FlY" secondAttribute="trailing" constant="40" id="oKf-R2-jxs"/>
                                 <constraint firstItem="WQ3-Lb-FlY" firstAttribute="leading" secondItem="817-w9-3Sf" secondAttribute="leading" constant="40" id="tSJ-lb-fgt"/>
                                 <constraint firstAttribute="height" constant="128" id="vsk-Wb-HR0"/>
+                                <constraint firstItem="Xea-gn-XZZ" firstAttribute="top" secondItem="WQ3-Lb-FlY" secondAttribute="bottom" constant="15" id="yZE-dx-BFy"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pr9-hm-DgJ">

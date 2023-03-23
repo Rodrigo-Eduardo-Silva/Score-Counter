@@ -24,7 +24,6 @@ class GamesViewController: UIViewController {
         navigationItem.title = "Score Counter"
      }
 
-
     func createBarButtonItem() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Game",
                                                                  style: .plain,

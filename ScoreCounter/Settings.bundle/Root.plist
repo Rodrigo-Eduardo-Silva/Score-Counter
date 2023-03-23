@@ -8,13 +8,25 @@
 	<array>
 		<dict>
 			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
+			<string>PSMultiValueSpecifier</string>
 			<key>Title</key>
 			<string>Ligar / Desligar  Som </string>
 			<key>Key</key>
 			<string>soundState</string>
 			<key>DefaultValue</key>
-			<false/>
+			<integer>0</integer>
+			<key>Titles</key>
+			<array>
+				<string>Off</string>
+				<string>Altert Point</string>
+				<string>Speech Point</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<string>0</string>
+				<string>1</string>
+				<string>2</string>
+			</array>
 		</dict>
 	</array>
 </dict>

@@ -191,7 +191,7 @@ extension ScoreViewController: UITableViewDelegate {
 extension ScoreViewController: ScoreTableViewCellDelegate {
     func plusPoint(index: Int) {
 
-        if soundState {
+        if soundState == 1 {
             self.playSound()
         }
 
@@ -212,7 +212,11 @@ extension ScoreViewController: ScoreTableViewCellDelegate {
             }
         let points = game.points
         game.setValue(Int(points) + plusSegment, forKey: "points")
-        speechScore(with: game.points)
+
+        if soundState == 2 {
+            speechScore(with: game.points)
+        }
+
         do {
             try context.save()
         } catch {
@@ -221,7 +225,7 @@ extension ScoreViewController: ScoreTableViewCellDelegate {
 }
 
     func subtractPoint(index: Int) {
-        if soundState {
+        if soundState == 1 {
             self.playSound()
         }
 
@@ -242,7 +246,10 @@ extension ScoreViewController: ScoreTableViewCellDelegate {
             }
         let points = game.points
         game.setValue(Int(points) - subtractSegment, forKey: "points")
-        speechScore(with: game.points)
+
+        if soundState == 2 {
+            speechScore(with: game.points)
+        }
         do {
             try context.save()
         } catch {
