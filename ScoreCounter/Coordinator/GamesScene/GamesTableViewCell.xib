@@ -23,7 +23,7 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7n-74-two">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="F7n-74-two">
                         <rect key="frame" x="16" y="7" width="62" height="30"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -34,6 +34,7 @@
                     <constraint firstItem="F7n-74-two" firstAttribute="centerY" secondItem="wuo-Ha-AHB" secondAttribute="centerY" id="Arn-jF-uJR"/>
                     <constraint firstAttribute="trailing" secondItem="wuo-Ha-AHB" secondAttribute="trailing" constant="16" id="Fmd-Qz-qnY"/>
                     <constraint firstItem="F7n-74-two" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="blj-18-p54"/>
+                    <constraint firstItem="wuo-Ha-AHB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="F7n-74-two" secondAttribute="trailing" constant="5" id="lcD-pp-xu4"/>
                     <constraint firstItem="F7n-74-two" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="siw-1R-SlM"/>
                 </constraints>
             </tableViewCellContentView>

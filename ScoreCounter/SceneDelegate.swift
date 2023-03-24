@@ -10,7 +10,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         guard let windowsScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowsScene)
-
+        window.overrideUserInterfaceStyle = .light
         let navigationController = UINavigationController()
         coordinator = AppCoordinator(windows: window, navigationController: navigationController)
         coordinator?.start()

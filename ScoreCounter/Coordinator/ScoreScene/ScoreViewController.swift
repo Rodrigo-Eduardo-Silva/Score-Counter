@@ -86,6 +86,23 @@ class ScoreViewController: UIViewController {
         navigationItem.rightBarButtonItems = [addPlayeButton, showSegmentIncrement]
     }
 
+    func sortedList() {
+        let alert = UIAlertController()
+        let nameIncrease = UIAlertAction(title: "Nome (A-Z)", style: .default) { [weak self] _ in
+                
+        }
+        let nameDecrease = UIAlertAction(title: "Nome (Z-A)", style: .default)
+        let highScoreFirst = UIAlertAction(title: "Valor (Menor Primeiro)", style: .default)
+        let lowScoreFirst = UIAlertAction(title: "Valor(Maior Primeiro)", style: .default)
+        let cancel = UIAlertAction(title: "Cancelar", style: .cancel)
+        alert.addAction(nameIncrease)
+        alert.addAction(nameDecrease)
+        alert.addAction(highScoreFirst)
+        alert.addAction(lowScoreFirst)
+        alert.addAction(cancel)
+        self.present(alert, animated: true, completion: nil)
+    }
+
     @objc func showIncrement() {
         if tableView.tableHeaderView == nil {
             tableView.tableHeaderView = segmentedControl
@@ -123,6 +140,7 @@ class ScoreViewController: UIViewController {
         let nib = UINib(nibName: ScoreTableViewCell.identifier, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: ScoreTableViewCell.identifier)
     }
+
 }
 // MARK: - Table View Data Source
 extension ScoreViewController: UITableViewDataSource {
@@ -190,7 +208,6 @@ extension ScoreViewController: UITableViewDelegate {
 
 extension ScoreViewController: ScoreTableViewCellDelegate {
     func plusPoint(index: Int) {
-
         if soundState == 1 {
             self.playSound()
         }
