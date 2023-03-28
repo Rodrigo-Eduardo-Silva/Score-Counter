@@ -47,6 +47,11 @@ class ScoreModel: NSObject {
             print(error.localizedDescription)
         }
     }
+
+    func updatePlayerName(with newName: String, game: Score) {
+        game.setValue(newName, forKey: "player")
+    }
+
 }
 
 extension ScoreModel: NSFetchedResultsControllerDelegate {

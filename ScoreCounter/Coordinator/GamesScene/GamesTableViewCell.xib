@@ -44,7 +44,7 @@
                 <outlet property="dateLabel" destination="wuo-Ha-AHB" id="jLs-Ff-IHa"/>
                 <outlet property="gameNameLabel" destination="F7n-74-two" id="4XH-dm-A8f"/>
             </connections>
-            <point key="canvasLocation" x="-116" y="148"/>
+            <point key="canvasLocation" x="-117.39130434782609" y="147.99107142857142"/>
         </tableViewCell>
     </objects>
     <resources>

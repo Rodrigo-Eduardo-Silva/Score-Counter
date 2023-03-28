@@ -15,8 +15,10 @@ class GamesTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+
     func prepareCell(game: NewGame) {
         gameNameLabel.text = game.name
         dateLabel.text = game.date?.formatted(date: .numeric, time: .omitted)
     }
+
 }

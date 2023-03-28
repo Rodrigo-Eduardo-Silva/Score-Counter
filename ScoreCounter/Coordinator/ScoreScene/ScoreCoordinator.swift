@@ -13,6 +13,7 @@ class ScoreCoodinator: Coordinator {
     func start() {
         let viewController = showScoreViewController()
         navigationController.pushViewController(viewController, animated: true)
+        navigationController.navigationItem.backButtonTitle = " "
     }
     private func showScoreViewController() -> ScoreViewController {
         let viewController = ScoreViewController(game: game)

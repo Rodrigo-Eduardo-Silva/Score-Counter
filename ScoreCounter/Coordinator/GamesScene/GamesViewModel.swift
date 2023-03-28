@@ -4,7 +4,7 @@ import Foundation
 // swiftlint:disable line_length
 
 protocol GamesViewModelDelegate: AnyObject {
-    func updateGames()
+    func updateGameTableView()
     func deleteGames(index: IndexPath)
 }
 
@@ -59,6 +59,10 @@ class GamesViewModel: NSObject {
             print(error.localizedDescription)
         }
     }
+
+    func updateGameName(with newName: String, game: NewGame) {
+        game.setValue(newName, forKey: "name")
+    }
 }
 
 extension GamesViewModel: NSFetchedResultsControllerDelegate {
@@ -67,15 +71,16 @@ extension GamesViewModel: NSFetchedResultsControllerDelegate {
 
         switch type {
         case .insert:
-            delegate?.updateGames()
+            delegate?.updateGameTableView()
         case .delete:
             if let indexPath = indexPath {
                 delegate?.deleteGames(index: indexPath)
             }
         case .move:
-            delegate?.updateGames()
+            delegate?.updateGameTableView()
         case .update:
-            delegate?.updateGames()
+            delegate?.updateGameTableView()
+            print("ei passou aqui")
         @unknown default:
             print("erro")
         }

@@ -9,6 +9,15 @@ protocol GamesViewControllerDelegate: AnyObject {
 class GamesViewController: UIViewController {
     weak var delegate: GamesViewControllerDelegate?
     @IBOutlet weak var tableView: UITableView!
+
+    lazy var label: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.textAlignment = .center
+        label.textColor = .white
+        return label
+    }()
+
     var model: GamesViewModel?
     var fetchResultController: NSFetchedResultsController<NewGame>! {
         model?.fetchResultController
@@ -16,6 +25,7 @@ class GamesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        label.text = "Click in ' + ' to add a new Game"
         tableView.delegate = self
         tableView.dataSource = self
         createBarButtonItem()
@@ -25,7 +35,7 @@ class GamesViewController: UIViewController {
      }
 
     func createBarButtonItem() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Game",
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"),
                                                                  style: .plain,
                                                                  target: self,
                                                                  action: #selector(addNewGame))
@@ -41,12 +51,12 @@ class GamesViewController: UIViewController {
     }
 
     @objc func addNewGame() {
-        let title = "Adicionar Novo Game"
-        let message = "Informe o Nome do Jogo"
+        let title = "Add New Game"
+        let message = "Insert Game Name"
 
         let altert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         altert.addTextField { textField in
-            textField.placeholder = "Ex: Partida de Dama"
+            textField.placeholder = "Ex: Queen game"
         }
 
         let addGame = UIAlertAction(title: title, style: .default, handler: { _ in
@@ -56,7 +66,7 @@ class GamesViewController: UIViewController {
             }
         })
 
-        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
 
         altert.addAction(addGame)
         altert.addAction(cancelAction)
@@ -79,6 +89,7 @@ extension GamesViewController: UITableViewDataSource {
         guard let count = fetchResultController.fetchedObjects?.count else {
             fatalError("Erro de contagem")
              }
+        tableView.backgroundView = count == 0 ? label : nil
         return count
     }
 
@@ -115,15 +126,15 @@ extension GamesViewController: UITableViewDelegate {
                 fatalError()
             }
             guard let gameName = game.name else { return }
-            let alert = UIAlertController(title: "Score Counter", message: "Reinicializar todos os Scores do Game", preferredStyle: .actionSheet)
+            let alert = UIAlertController(title: "Score Counter", message: "Reset all Game Scores", preferredStyle: .actionSheet)
 
-            let resetAction = UIAlertAction(title: "Reinicializar Score do \(String(describing: gameName))", style: .destructive) { [weak self] _ in
+            let resetAction = UIAlertAction(title: "Reset Score of \(String(describing: gameName))", style: .destructive) { [weak self] _ in
                 guard let self = self else { return }
                 self.model?.resetScorePoint(context: self.context, game: game)
                 self.tableView.reloadData()
             }
 
-            let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             alert.addAction(resetAction)
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
@@ -150,7 +161,43 @@ extension GamesViewController: UITableViewDelegate {
         deleteAction.backgroundColor = .blue
         deleteAction.image = UIImage(systemName: "trash")
         return deleteAction
+    }
 
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let update = self.updateNameGame(index: indexPath)
+        let swipe = UISwipeActionsConfiguration(actions: [update])
+        return swipe
+    }
+
+    private func updateNameGame(index: IndexPath) -> UIContextualAction {
+        let updateName = UIContextualAction(style: .normal, title: "") { [weak self] (_, _, _) in
+            guard let self = self else { return }
+            guard let game = self.fetchResultController.fetchedObjects?[index.row] else {
+                fatalError()
+            }
+            let alert = UIAlertController(title: "", message: "Edit Game Name", preferredStyle: .alert)
+            alert.addTextField { texField in
+                texField.text = game.name
+            }
+
+            let saveName = UIAlertAction(title: "OK", style: .default) { _ in
+                if let newName = alert.textFields?.first?.text {
+                    self.model?.updateGameName(with: newName, game: game)
+                    do {
+                        try self.context.save()
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                    self.tableView.reloadData()
+                }
+            }
+            alert.addAction(saveName)
+            self.present(alert, animated: true)
+
+        }
+        updateName.backgroundColor = .blue
+        updateName.image = UIImage(systemName: "pencil.line")
+        return updateName
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -163,7 +210,7 @@ extension GamesViewController: UITableViewDelegate {
 // MARK: - Game Model Delegate
 extension GamesViewController: GamesViewModelDelegate {
 
-    func updateGames() {
+    func updateGameTableView() {
         tableView.reloadData()
     }
 

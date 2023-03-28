@@ -11,6 +11,7 @@ class GamesCoordinator: Coordinator {
     func start() {
         let viewController = showGamesViewController()
         navigationController.pushViewController(viewController, animated: true)
+
     }
 
     private func showGamesViewController() -> GamesViewController {

@@ -15,6 +15,13 @@ class ScoreViewController: UIViewController {
     var segmentedControl = UISegmentedControl(items: ["+1", "+5", "+10", "+100"])
     var scoreSound = AVAudioPlayer()
     var soundState = Configuration.shared.soundState
+    lazy var label: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 23)
+        label.textColor = .white
+        return label
+    }()
 
     init(game: NewGame) {
         self.game = game
@@ -27,6 +34,7 @@ class ScoreViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        label.text = "Click in '+' to add a new Player"
         tableView.dataSource = self
         tableView.delegate = self
         model?.delegate = self
@@ -35,7 +43,7 @@ class ScoreViewController: UIViewController {
         model?.loadScore(with: context, gameName: game)
         configureSegmentedControll()
         navigationItem.title = game.name
-
+  
     }
 
     func configureSegmentedControll() {
@@ -74,7 +82,7 @@ class ScoreViewController: UIViewController {
     }
 
     func createBarButtonItem() {
-    let addPlayeButton = UIBarButtonItem(title: "Add Player",
+    let addPlayeButton = UIBarButtonItem(image: UIImage(systemName: "plus"),
                                          style: .plain,
                                          target: self,
                                          action: #selector(addNewPlayer))
@@ -84,24 +92,7 @@ class ScoreViewController: UIViewController {
                                                target: self,
                                                action: #selector(showIncrement))
         navigationItem.rightBarButtonItems = [addPlayeButton, showSegmentIncrement]
-    }
-
-    func sortedList() {
-        let alert = UIAlertController()
-        let nameIncrease = UIAlertAction(title: "Nome (A-Z)", style: .default) { [weak self] _ in
-                
-        }
-        let nameDecrease = UIAlertAction(title: "Nome (Z-A)", style: .default)
-        let highScoreFirst = UIAlertAction(title: "Valor (Menor Primeiro)", style: .default)
-        let lowScoreFirst = UIAlertAction(title: "Valor(Maior Primeiro)", style: .default)
-        let cancel = UIAlertAction(title: "Cancelar", style: .cancel)
-        alert.addAction(nameIncrease)
-        alert.addAction(nameDecrease)
-        alert.addAction(highScoreFirst)
-        alert.addAction(lowScoreFirst)
-        alert.addAction(cancel)
-        self.present(alert, animated: true, completion: nil)
-    }
+      }
 
     @objc func showIncrement() {
         if tableView.tableHeaderView == nil {
@@ -148,6 +139,7 @@ extension ScoreViewController: UITableViewDataSource {
         guard  let count = fetchResultScore.fetchedObjects?.count else {
             fatalError("Erro de contagem")
         }
+        tableView.backgroundView = count == 0 ? label : nil
         return count
     }
 
@@ -204,6 +196,41 @@ extension ScoreViewController: UITableViewDelegate {
         return deleteAction
     }
 
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let update = self.updateNamePlayer(index: indexPath)
+        let swipe = UISwipeActionsConfiguration(actions: [update])
+        return swipe
+    }
+
+    private func updateNamePlayer(index: IndexPath) -> UIContextualAction {
+        let updateNamePlayer = UIContextualAction(style: .normal, title: "") { _, _, _ in
+            guard let playerName = self.fetchResultScore.fetchedObjects?[index.row] else {
+                fatalError()
+            }
+
+            let alert = UIAlertController(title: "", message: "Edit Player Name", preferredStyle: .alert)
+            alert.addTextField { textfield in
+                textfield.text = playerName.player
+            }
+            let saveName = UIAlertAction(title: "OK", style: .default) { _ in
+                if let newName = alert.textFields?.first?.text {
+                    self.model?.updatePlayerName(with: newName, game: playerName)
+                    do {
+                        try self.context.save()
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                    self.tableView.reloadData()
+                }
+            }
+            alert.addAction(saveName)
+            self.present(alert, animated: true)
+        }
+
+        updateNamePlayer.backgroundColor = .blue
+        updateNamePlayer.image = UIImage(systemName: "pencil.line")
+        return updateNamePlayer
+    }
 }
 
 extension ScoreViewController: ScoreTableViewCellDelegate {
