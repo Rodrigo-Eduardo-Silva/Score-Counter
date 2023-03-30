@@ -18,6 +18,7 @@ class GamesViewModel: NSObject {
         self.game.name = game
         self.game.date = date
         self.game.idGame = UUID().uuidString
+        self.game.coverGame = UIImage(systemName: "checkerboard.rectangle")
         do {
             try context.save()
 
@@ -62,6 +63,10 @@ class GamesViewModel: NSObject {
 
     func updateGameName(with newName: String, game: NewGame) {
         game.setValue(newName, forKey: "name")
+    }
+
+    func updateCoverGame(with image: UIImage, game: NewGame) {
+        game.setValue(image, forKey: "coverGame")
     }
 }
 

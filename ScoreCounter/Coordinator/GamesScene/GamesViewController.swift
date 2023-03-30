@@ -9,10 +9,11 @@ protocol GamesViewControllerDelegate: AnyObject {
 class GamesViewController: UIViewController {
     weak var delegate: GamesViewControllerDelegate?
     @IBOutlet weak var tableView: UITableView!
+    var imageCover: UIImage?
 
     lazy var label: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.font = UIFont.boldSystemFont(ofSize: 23)
         label.textAlignment = .center
         label.textColor = .white
         return label
@@ -32,7 +33,7 @@ class GamesViewController: UIViewController {
         registerCell()
         model?.loadGames(context: context)
         navigationItem.title = "Score Counter"
-     }
+    }
 
     func createBarButtonItem() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"),
@@ -44,6 +45,7 @@ class GamesViewController: UIViewController {
                                                                 style: .plain,
                                                                 target: self,
                                                                 action: #selector(showMenu))
+
     }
 
     @objc func showMenu() {
@@ -165,16 +167,37 @@ extension GamesViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let update = self.updateNameGame(index: indexPath)
-        let swipe = UISwipeActionsConfiguration(actions: [update])
+        let updateCover = self.updateCover(index: indexPath)
+        let swipe = UISwipeActionsConfiguration(actions: [update, updateCover])
         return swipe
     }
 
+    private func updateCover(index: IndexPath) -> UIContextualAction {
+
+        let updateCover = UIContextualAction(style: .normal, title: "") { [weak self] (_, _, _) in
+            guard let self = self else { return }
+            guard let game = self.fetchResultController.fetchedObjects?[index.row] else {
+                fatalError()
+            }
+
+            let viewController = GameCoverViewController(game: game)
+            viewController.delegate = self
+            self.present(viewController, animated: true)
+
+        }
+        updateCover.backgroundColor = .systemBlue
+        updateCover.image = UIImage(systemName: "gear")
+        return updateCover
+    }
+
     private func updateNameGame(index: IndexPath) -> UIContextualAction {
+
         let updateName = UIContextualAction(style: .normal, title: "") { [weak self] (_, _, _) in
             guard let self = self else { return }
             guard let game = self.fetchResultController.fetchedObjects?[index.row] else {
                 fatalError()
             }
+
             let alert = UIAlertController(title: "", message: "Edit Game Name", preferredStyle: .alert)
             alert.addTextField { texField in
                 texField.text = game.name
@@ -183,6 +206,7 @@ extension GamesViewController: UITableViewDelegate {
             let saveName = UIAlertAction(title: "OK", style: .default) { _ in
                 if let newName = alert.textFields?.first?.text {
                     self.model?.updateGameName(with: newName, game: game)
+
                     do {
                         try self.context.save()
                     } catch {
@@ -191,10 +215,11 @@ extension GamesViewController: UITableViewDelegate {
                     self.tableView.reloadData()
                 }
             }
+
             alert.addAction(saveName)
             self.present(alert, animated: true)
-
         }
+
         updateName.backgroundColor = .blue
         updateName.image = UIImage(systemName: "pencil.line")
         return updateName
@@ -216,6 +241,22 @@ extension GamesViewController: GamesViewModelDelegate {
 
     func deleteGames(index: IndexPath) {
         tableView.deleteRows(at: [index], with: .fade)
-
     }
  }
+
+extension GamesViewController: GameCoverViewControllerDelegate {
+    func sendImage(with image: UIImage, at game: NewGame) {
+        imageCover = image
+        if let imageCover = self.imageCover {
+            self.model?.updateCoverGame(with: imageCover, game: game)
+            do {
+                try self.context.save()
+            } catch {
+                print(error.localizedDescription)
+            }
+            self.tableView.reloadData()
+        } else {
+            print("não tem uma image")
+        }
+    }
+}

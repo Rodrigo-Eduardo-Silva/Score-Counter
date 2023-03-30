@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		330E519C29D3B89B00745445 /* GameCoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330E519A29D3B89B00745445 /* GameCoverViewController.swift */; };
+		330E519D29D3B89B00745445 /* GameCoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 330E519B29D3B89B00745445 /* GameCoverViewController.xib */; };
+		330E519F29D3BE4400745445 /* GameCoverCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330E519E29D3BE4400745445 /* GameCoverCoordinator.swift */; };
+		330E51A229D3C01300745445 /* GameCoverCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330E51A029D3C01300745445 /* GameCoverCollectionViewCell.swift */; };
+		330E51A329D3C01300745445 /* GameCoverCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 330E51A129D3C01300745445 /* GameCoverCollectionViewCell.xib */; };
 		333F21D42929ACC00075EA40 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333F21D22929ACC00075EA40 /* AboutViewController.swift */; };
 		333F21D52929ACC00075EA40 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 333F21D32929ACC00075EA40 /* AboutViewController.xib */; };
 		333F21D82929B2E70075EA40 /* AboutCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333F21D72929B2E70075EA40 /* AboutCoordinator.swift */; };
@@ -37,6 +42,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		330E519A29D3B89B00745445 /* GameCoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCoverViewController.swift; sourceTree = "<group>"; };
+		330E519B29D3B89B00745445 /* GameCoverViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameCoverViewController.xib; sourceTree = "<group>"; };
+		330E519E29D3BE4400745445 /* GameCoverCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCoverCoordinator.swift; sourceTree = "<group>"; };
+		330E51A029D3C01300745445 /* GameCoverCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCoverCollectionViewCell.swift; sourceTree = "<group>"; };
+		330E51A129D3C01300745445 /* GameCoverCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameCoverCollectionViewCell.xib; sourceTree = "<group>"; };
 		333F21D22929ACC00075EA40 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		333F21D32929ACC00075EA40 /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
 		333F21D72929B2E70075EA40 /* AboutCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCoordinator.swift; sourceTree = "<group>"; };
@@ -79,6 +89,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		330E519929D3B82A00745445 /* GameCover */ = {
+			isa = PBXGroup;
+			children = (
+				330E519A29D3B89B00745445 /* GameCoverViewController.swift */,
+				330E51A029D3C01300745445 /* GameCoverCollectionViewCell.swift */,
+				330E51A129D3C01300745445 /* GameCoverCollectionViewCell.xib */,
+				330E519B29D3B89B00745445 /* GameCoverViewController.xib */,
+				330E519E29D3BE4400745445 /* GameCoverCoordinator.swift */,
+			);
+			path = GameCover;
+			sourceTree = "<group>";
+		};
 		333F21D62929AE130075EA40 /* AboutScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +159,7 @@
 		3363A3982908C6A90051B5E9 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				330E519929D3B82A00745445 /* GameCover */,
 				333F21D62929AE130075EA40 /* AboutScene */,
 				33F8D08B2910702A00718077 /* ScoreScene */,
 				3363A3992908C6BF0051B5E9 /* GamesScene */,
@@ -234,9 +257,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				330E519D29D3B89B00745445 /* GameCoverViewController.xib in Resources */,
 				3350FA43292EEAD4006E75FD /* score.mp3 in Resources */,
 				33A77F522911DA15001BBAC6 /* ScoreTableViewCell.xib in Resources */,
 				333F21D52929ACC00075EA40 /* AboutViewController.xib in Resources */,
+				330E51A329D3C01300745445 /* GameCoverCollectionViewCell.xib in Resources */,
 				3363A3832908A8130051B5E9 /* LaunchScreen.storyboard in Resources */,
 				3363A3802908A8130051B5E9 /* Assets.xcassets in Resources */,
 				3363A3972908C61B0051B5E9 /* GamesViewController.xib in Resources */,
@@ -274,8 +299,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				330E51A229D3C01300745445 /* GameCoverCollectionViewCell.swift in Sources */,
 				33A77F542911ECF6001BBAC6 /* ScoreCoordinator.swift in Sources */,
 				3363A37E2908A8120051B5E9 /* ScoreCounter.xcdatamodeld in Sources */,
+				330E519F29D3BE4400745445 /* GameCoverCoordinator.swift in Sources */,
 				3368D42C294007EA00DA1AC0 /* Configuration.swift in Sources */,
 				3363A38F2908AA780051B5E9 /* Coordinator.swift in Sources */,
 				33A1ABF22922C305004A4670 /* CoreDataShared.swift in Sources */,
@@ -292,6 +319,7 @@
 				3363A3762908A8120051B5E9 /* SceneDelegate.swift in Sources */,
 				3363A3912908ACBD0051B5E9 /* AppCoordinator.swift in Sources */,
 				33C1AD63297231E0004185F8 /* AboutViewDescription.swift in Sources */,
+				330E519C29D3B89B00745445 /* GameCoverViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -5,6 +5,7 @@ class GamesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var gameNameLabel: UILabel!
+    @IBOutlet weak var imageGame: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -18,7 +19,9 @@ class GamesTableViewCell: UITableViewCell {
 
     func prepareCell(game: NewGame) {
         gameNameLabel.text = game.name
-        dateLabel.text = game.date?.formatted(date: .numeric, time: .omitted)
+        imageGame.image = game.coverGame as? UIImage
+        imageGame.layer.cornerRadius = imageGame.frame.size.height/2
+//        dateLabel.text = game.date?.formatted(date: .numeric, time: .omitted)
     }
 
 }

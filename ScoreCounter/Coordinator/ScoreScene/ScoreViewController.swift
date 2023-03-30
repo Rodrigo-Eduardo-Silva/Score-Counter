@@ -38,12 +38,10 @@ class ScoreViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         model?.delegate = self
-        createBarButtonItem()
+        configureNavigationBar()
         registerCell()
         model?.loadScore(with: context, gameName: game)
         configureSegmentedControll()
-        navigationItem.title = game.name
-  
     }
 
     func configureSegmentedControll() {
@@ -93,6 +91,12 @@ class ScoreViewController: UIViewController {
                                                action: #selector(showIncrement))
         navigationItem.rightBarButtonItems = [addPlayeButton, showSegmentIncrement]
       }
+
+    func configureNavigationBar() {
+        navigationItem.title = game.name
+        self.navigationController?.navigationBar.topItem?.backButtonTitle = " "
+        createBarButtonItem()
+    }
 
     @objc func showIncrement() {
         if tableView.tableHeaderView == nil {
