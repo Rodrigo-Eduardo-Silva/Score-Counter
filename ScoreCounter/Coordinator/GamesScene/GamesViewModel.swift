@@ -18,7 +18,7 @@ class GamesViewModel: NSObject {
         self.game.name = game
         self.game.date = date
         self.game.idGame = UUID().uuidString
-        self.game.coverGame = UIImage(systemName: "checkerboard.rectangle")
+        self.game.coverGame = GameCoverModel.allCases.randomElement()?.image
         do {
             try context.save()
 

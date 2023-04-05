@@ -98,6 +98,21 @@ class ScoreViewController: UIViewController {
         createBarButtonItem()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        configureColors()
+    }
+
+    func configureColors() {
+        let apperance = UINavigationBarAppearance()
+        apperance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        apperance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.standardAppearance = apperance
+        navigationController?.navigationBar.compactAppearance = apperance
+        tableView.backgroundColor = UIColor(hexValue: 0x4D69E8)
+        view.backgroundColor = UIColor(hexValue: 0x4D69E8)
+    }
+
     @objc func showIncrement() {
         if tableView.tableHeaderView == nil {
             tableView.tableHeaderView = segmentedControl
@@ -107,12 +122,12 @@ class ScoreViewController: UIViewController {
     }
 
     @objc func addNewPlayer() {
-        let title = "Adicionar Novo Player"
-        let message = "Informe o Nome do Jogador"
+        let title = "Add New Player"
+        let message = "Player Name"
 
         let altert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         altert.addTextField { textField in
-            textField.placeholder = " Nome do Jogador"
+            textField.placeholder = "Player Name"
         }
 
         let addPlayer = UIAlertAction(title: title, style: .default, handler: {  [weak self] _ in
@@ -123,7 +138,7 @@ class ScoreViewController: UIViewController {
             }
         })
 
-        let cancelAction =  UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        let cancelAction =  UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
 
         altert.addAction(addPlayer)
         altert.addAction(cancelAction)
@@ -148,7 +163,8 @@ extension ScoreViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 65
+        let height = UITableView.automaticDimension <= 65 ? 65 : UITableView.automaticDimension
+        return height
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

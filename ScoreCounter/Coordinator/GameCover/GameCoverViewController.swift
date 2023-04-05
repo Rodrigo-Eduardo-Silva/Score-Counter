@@ -5,18 +5,14 @@ protocol GameCoverViewControllerDelegate: AnyObject {
 
 class GameCoverViewController: UIViewController {
 
-    let image1 = UIImage(named: "Baralho")
-    let image2 = UIImage(named: "Chess ")
-    let image3 = UIImage(named: "Baralho")
-    let image4 = UIImage(named: "Baralho")
-    let image5 = UIImage(named: "Baralho")
-    var datateste: [UIImage] = []
+    var model: [GameCoverModel]
     var game: NewGame
     weak var delegate: GameCoverViewControllerDelegate?
     @IBOutlet weak var colectionImage: UICollectionView!
 
-    init(game: NewGame) {
+    init(game: NewGame, model: [GameCoverModel]) {
         self.game = game
+        self.model = model
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -26,14 +22,10 @@ class GameCoverViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        datateste.append(image1!)
-        datateste.append(image2!)
-        datateste.append(image3!)
-        datateste.append(image4!)
-        datateste.append(image5!)
         registerCell()
         colectionImage.dataSource = self
         colectionImage.delegate = self
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
     }
 
     func registerCell() {
@@ -42,9 +34,10 @@ class GameCoverViewController: UIViewController {
     }
 
 }
+
 extension GameCoverViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        datateste.count
+        model.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -54,16 +47,15 @@ extension GameCoverViewController: UICollectionViewDataSource {
                                                             for: indexPath) as? GameCoverCollectionViewCell else {
             fatalError("foi aquiiiiiiii")
         }
-        cell.prepareCell(with: datateste[indexPath.row])
+        cell.prepareCell(with: model[indexPath.row].image)
         return cell
     }
 }
 
 extension GameCoverViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let image = datateste[indexPath.row]
+        let image = model[indexPath.row].image
         delegate?.sendImage(with: image, at: game)
     dismiss(animated: true)
     }
-
 }

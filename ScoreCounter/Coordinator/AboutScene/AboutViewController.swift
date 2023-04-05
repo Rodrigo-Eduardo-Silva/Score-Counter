@@ -9,7 +9,8 @@ class AboutViewController: UIViewController {
     @IBOutlet weak var stateSound: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.backgroundColor = .white
+        configureNavigationBar()
+        configureColors()
     }
 
      @IBAction func sendEmail(_ sender: Any) {
@@ -24,6 +25,21 @@ class AboutViewController: UIViewController {
         super.viewWillAppear(animated)
         stateSound.selectedSegmentIndex = soundState.soundState
 //        stateSound.setOn(soundState.soundState, animated: false)
+    }
+
+    func configureNavigationBar() {
+         self.navigationController?.navigationBar.topItem?.backButtonTitle = " "
+    }
+    
+    func configureColors() {
+        let apperance = UINavigationBarAppearance()
+        apperance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        apperance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.standardAppearance = apperance
+        navigationController?.navigationBar.compactAppearance = apperance
+        stateSound.backgroundColor = UIColor(hexValue: 0x4D69E8)
+        view.backgroundColor = UIColor(hexValue: 0x4D69E8)
     }
 
     func showAltert() {

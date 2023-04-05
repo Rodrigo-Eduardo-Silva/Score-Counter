@@ -8,13 +8,16 @@ class GamesTableViewCell: UITableViewCell {
     @IBOutlet weak var imageGame: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        configureColors()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    func configureColors() {
+        self.backgroundColor = UIColor(hexValue: 0x54A0FF)
     }
 
     func prepareCell(game: NewGame) {

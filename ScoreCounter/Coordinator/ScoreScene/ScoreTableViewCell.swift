@@ -15,7 +15,7 @@ class ScoreTableViewCell: UITableViewCell {
     @IBOutlet weak var segmentControlteste: UISegmentedControl!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        configureColors()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -23,6 +23,11 @@ class ScoreTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+
+    func configureColors() {
+        self.backgroundColor = UIColor(hexValue: 0x54A0FF)
+    }
+
     func prepareCell(with scorePlayer: Score, at index: Int) {
         self.index = index
         nameLabel.text = scorePlayer.player

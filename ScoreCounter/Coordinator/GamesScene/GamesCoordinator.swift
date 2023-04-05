@@ -10,7 +10,7 @@ class GamesCoordinator: Coordinator {
 
     func start() {
         let viewController = showGamesViewController()
-        navigationController.pushViewController(viewController, animated: true)
+         navigationController.pushViewController(viewController, animated: true)
 
     }
 
@@ -22,10 +22,10 @@ class GamesCoordinator: Coordinator {
         viewController.delegate = self
         return viewController
     }
-
 }
 
 extension GamesCoordinator: GamesViewControllerDelegate {
+
     func showMenuViewController() {
         let menuCoordinator = AboutCoordinator(navigationController: navigationController)
         menuCoordinator.start()
@@ -36,5 +36,13 @@ extension GamesCoordinator: GamesViewControllerDelegate {
         let scoreCoordinator = ScoreCoodinator(navigationController: navigationController, game: game)
         scoreCoordinator.start()
         childCoordinator = scoreCoordinator
+    }
+
+    func showGameCoverViewController(with game: NewGame, model: [GameCoverModel]) {
+        let gameCoverCoordinator = GameCoverCoordinator(navigationController: navigationController,
+                                                        game: game,
+                                                        model: model)
+        gameCoverCoordinator.start()
+        childCoordinator = gameCoverCoordinator
     }
 }

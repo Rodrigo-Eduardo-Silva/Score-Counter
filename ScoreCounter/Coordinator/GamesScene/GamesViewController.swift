@@ -4,12 +4,16 @@ import CoreData
 protocol GamesViewControllerDelegate: AnyObject {
     func showScoreViewController(with game: NewGame)
     func showMenuViewController()
+    func showGameCoverViewController(with game: NewGame, model: [GameCoverModel])
 }
 
 class GamesViewController: UIViewController {
     weak var delegate: GamesViewControllerDelegate?
     @IBOutlet weak var tableView: UITableView!
     var imageCover: UIImage?
+    var images: [GameCoverModel] {
+        GameCoverModel.allCases
+    }
 
     lazy var label: UILabel = {
         let label = UILabel()
@@ -46,6 +50,21 @@ class GamesViewController: UIViewController {
                                                                 target: self,
                                                                 action: #selector(showMenu))
 
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        configureColors()
+    }
+
+    func configureColors() {
+        let apperance = UINavigationBarAppearance()
+        apperance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        apperance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.standardAppearance = apperance
+        navigationController?.navigationBar.compactAppearance = apperance
+        tableView.backgroundColor = UIColor(hexValue: 0x4D69E8)
+        view.backgroundColor = UIColor(hexValue: 0x4D69E8)
     }
 
     @objc func showMenu() {
@@ -160,7 +179,7 @@ extension GamesViewController: UITableViewDelegate {
                     print(error.localizedDescription)
                 }
         }
-        deleteAction.backgroundColor = .blue
+        deleteAction.backgroundColor = .red
         deleteAction.image = UIImage(systemName: "trash")
         return deleteAction
     }
@@ -180,13 +199,14 @@ extension GamesViewController: UITableViewDelegate {
                 fatalError()
             }
 
-            let viewController = GameCoverViewController(game: game)
+//            self.delegate?.showGameCoverViewController(with: game, model: self.images)
+            let viewController = GameCoverViewController(game: game, model: self.images)
             viewController.delegate = self
             self.present(viewController, animated: true)
 
         }
-        updateCover.backgroundColor = .systemBlue
-        updateCover.image = UIImage(systemName: "gear")
+        updateCover.backgroundColor = UIColor(hexValue: 0x6F61FF)
+        updateCover.image = UIImage(systemName: "square.and.pencil")
         return updateCover
     }
 
